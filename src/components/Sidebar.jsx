@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <h1>{userName}</h1>
+        <h1>Bejentkezve: {userName}</h1>
 
         <div className="sidebar__buttons">
           <NavLink to="/users" className={activeLink}>

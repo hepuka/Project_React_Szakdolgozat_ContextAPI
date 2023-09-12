@@ -9,10 +9,12 @@ const Admin = () => {
     <>
       <div className="admin">
         <div className="admin__content">
-          <div>
-            <h1>Üdvözöljük</h1>
-            <h2>KunPao's Coffee POS</h2>
-          </div>
+          <img
+            src="https://freesvg.org/img/1667812423coffee-shop-logo-concept.png"
+            alt="coffe_logo"
+          />
+          <h1>Üdvözöljük</h1>
+          <h2>KunPao's Coffee POS</h2>
         </div>
         <Footer />
         <Sidebar />
