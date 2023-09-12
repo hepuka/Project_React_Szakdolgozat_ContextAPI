@@ -39,7 +39,6 @@ const Users = () => {
   const deleteUser = async (id) => {
     try {
       await deleteDoc(doc(db, "users", id));
-
       Notiflix.Notify.success("Sikeres felhasználótörlés!");
     } catch (error) {
       Notiflix.Notify.failure(error.message);
