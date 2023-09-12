@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import Notiflix from "notiflix";
-import "./Login.scss";
+import "./Auth.scss";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -59,7 +59,7 @@ const Login = () => {
 
         <div className="login__resetSection">
           <Link to="/reset">
-            <button className="login__resetButton">Elfelejtett jelszó</button>
+            <button>Elfelejtett jelszó</button>
           </Link>
         </div>
       </div>

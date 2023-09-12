@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.scss";
+import "./Auth.scss";
 import Notiflix from "notiflix";
 import { auth } from "../../firebase/config";
 import { sendPasswordResetEmail } from "firebase/auth";
