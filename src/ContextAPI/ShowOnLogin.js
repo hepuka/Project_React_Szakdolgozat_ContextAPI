@@ -1,12 +1,14 @@
 import { useStateValue } from "./StateProvider";
+import { useNavigate } from "react-router-dom";
 
 const ShowOnLogin = ({ children }) => {
   const [{ user }] = useStateValue();
+  const navigate = useNavigate();
 
   if (user) {
     return children;
   }
-  return null;
+  navigate("/");
 };
 
 export default ShowOnLogin;
