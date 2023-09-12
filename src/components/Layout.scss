@@ -1,0 +1,14 @@
+.layout {
+    display: flex;
+    height: 100vh;
+    padding: 0 30px;
+}
+
+.layout__content {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
