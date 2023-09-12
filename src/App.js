@@ -7,6 +7,7 @@ import { auth } from "./firebase/config";
 import { useStateValue } from "./ContextAPI/StateProvider";
 import { useEffect } from "react";
 import Admin from "./pages/admin/Admin";
+import Users from "./pages/admin/Users";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -47,6 +48,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <Employees />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/users"
+            element={
+              <ShowOnLogin>
+                <Users />
               </ShowOnLogin>
             }
           ></Route>

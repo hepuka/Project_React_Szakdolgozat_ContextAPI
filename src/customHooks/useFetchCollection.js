@@ -1,14 +1,12 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase/config";
+import Notiflix from "notiflix";
 
 const useFetchCollection = (collectionName) => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const getCollection = () => {
-    setIsLoading(true);
-
     try {
       const docRef = collection(db, collectionName);
       const q = query(docRef, orderBy("createdAt", "desc"));
@@ -20,10 +18,9 @@ const useFetchCollection = (collectionName) => {
         }));
 
         setData(allData);
-        setIsLoading(false);
       });
     } catch (error) {
-      setIsLoading(false);
+      Notiflix.Notify.failure(error.message);
     }
   };
 
@@ -31,7 +28,7 @@ const useFetchCollection = (collectionName) => {
     getCollection();
   }, []);
 
-  return { data, isLoading };
+  return { data };
 };
 
 export default useFetchCollection;
