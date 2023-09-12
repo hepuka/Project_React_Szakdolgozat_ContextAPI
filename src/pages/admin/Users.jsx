@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import Notiflix from "notiflix";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Users = () => {
   const { data } = useFetchCollection("users");
-
-  console.log(data);
+  const [{ user }] = useStateValue();
 
   const confirmDelete = (id) => {
     Notiflix.Confirm.show(
@@ -53,7 +53,7 @@ const Users = () => {
         <div className="users__cardList">
           {data.map((item) => {
             return (
-              <div className="users__card">
+              <div key={item.id} className="users__card">
                 <div className="users__rows">
                   <p>Név: </p> <span>{item.name}</span>
                 </div>
@@ -65,6 +65,16 @@ const Users = () => {
                 </div>
                 <div className="users__rows">
                   <p>Adószám: </p> <span>{item.tax}</span>
+                </div>
+                <div className="users__rows">
+                  <p>Státusz: </p>{" "}
+                  <span
+                    className={
+                      item.email === user.email ? "active" : "inactive"
+                    }
+                  >
+                    {item.email === user.email ? "Aktív" : "Inaktív"}
+                  </span>
                 </div>
                 <div className="users__buttons">
                   <Link to={`/add-user/${item.id}`}>

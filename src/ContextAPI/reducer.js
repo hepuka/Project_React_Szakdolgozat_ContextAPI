@@ -1,6 +1,7 @@
 export const initialState = {
   user: null,
   userName: null,
+  isActive: false,
 };
 
 const reducer = (state, action) => {
@@ -20,6 +21,7 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
         userName: uName,
+        isActive: true,
       };
 
     default:

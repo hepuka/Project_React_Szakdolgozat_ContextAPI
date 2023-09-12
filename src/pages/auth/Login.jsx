@@ -17,7 +17,7 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         const userEmail = user.email.substring(0, user.email.indexOf("@"));
-
+        console.log(user);
         Notiflix.Notify.success("Sikeres bejelentkezés!");
 
         userEmail === "admin" || userEmail === "manager"
