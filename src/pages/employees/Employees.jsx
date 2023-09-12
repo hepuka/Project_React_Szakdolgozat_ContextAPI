@@ -1,7 +1,8 @@
 import React from "react";
+import Sidebar from "../../components/Sidebar";
 
 const Employees = () => {
-  return <h1>Employees</h1>;
+  return <Sidebar />;
 };
 
 export default Employees;
