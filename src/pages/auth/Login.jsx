@@ -31,7 +31,7 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="login__container">
+      <div className="left">
         <h1>KunPao's Coffee Management</h1>
         <form>
           <label>E-mail</label>
@@ -55,14 +55,14 @@ const Login = () => {
           >
             Belépés
           </button>
+          <div className="login__resetSection">
+            <Link to="/reset">
+              <button>Elfelejtett jelszó</button>
+            </Link>
+          </div>
         </form>
-
-        <div className="login__resetSection">
-          <Link to="/reset">
-            <button>Elfelejtett jelszó</button>
-          </Link>
-        </div>
       </div>
+      <div className="right"></div>
     </div>
   );
 };
