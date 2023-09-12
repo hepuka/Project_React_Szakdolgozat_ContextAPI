@@ -8,6 +8,7 @@ import { useStateValue } from "./ContextAPI/StateProvider";
 import { useEffect } from "react";
 import Admin from "./pages/admin/Admin";
 import Users from "./pages/admin/Users";
+import Register from "./pages/auth/Register";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -56,6 +57,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <Users />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/register"
+            element={
+              <ShowOnLogin>
+                <Register />
               </ShowOnLogin>
             }
           ></Route>

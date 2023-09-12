@@ -49,7 +49,6 @@ const Users = () => {
     <Layout>
       <div className="users">
         <h1>Regisztrált alkalmazottak</h1>
-
         <div className="users__cardList">
           {data.map((item) => {
             return (
