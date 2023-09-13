@@ -6,7 +6,7 @@ const Search = ({ value, onChange }) => {
     <div className="search">
       <input
         type="text"
-        placeholder="Keresés név alapján"
+        placeholder="Keresés Név és Kategória alapján"
         value={value}
         onChange={onChange}
       />
