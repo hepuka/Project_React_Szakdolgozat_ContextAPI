@@ -1,0 +1,78 @@
+@import "../../index.scss";
+
+.products {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    width: 100%;
+
+    .products__search {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+
+        p {
+            font-size: 1.5rem;
+
+            span {
+
+                font-weight: bold;
+            }
+        }
+    }
+
+    .products__cardlist {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 60px;
+        gap: 30px;
+        width: 100%;
+        padding: 0 30px;
+
+        .products__card {
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            width: 322px;
+            height: 500px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            color: black;
+            font-size: 2rem;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.8rem;
+
+            .products__image {
+                height: 70px;
+                margin-bottom: 15px;
+
+                img {
+                    width: 100px;
+                    height: 100%;
+                    border-radius: 5px;
+                }
+            }
+
+            .products__rows {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+
+                .descinfo {
+                    text-align: justify;
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+}

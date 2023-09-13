@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Admin from "./pages/admin/Admin";
 import Users from "./pages/admin/Users";
 import Register from "./pages/auth/Register";
+import Products from "./pages/admin/Products";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -65,6 +66,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <Register />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/products"
+            element={
+              <ShowOnLogin>
+                <Products />
               </ShowOnLogin>
             }
           ></Route>
