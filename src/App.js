@@ -10,6 +10,7 @@ import Admin from "./pages/admin/Admin";
 import Users from "./pages/admin/Users";
 import Register from "./pages/auth/Register";
 import Products from "./pages/admin/Products";
+import AddProducts from "./pages/admin/AddProducts";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -66,6 +67,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <Register />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/add-product/:id"
+            element={
+              <ShowOnLogin>
+                <AddProducts />
               </ShowOnLogin>
             }
           ></Route>

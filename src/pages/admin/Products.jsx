@@ -22,8 +22,6 @@ const Products = () => {
     });
   }, [data]);
 
-  console.log(products);
-
   const filteredProducts = data.filter(
     (item) =>
       item.name.toLowerCase().includes(search.toLowerCase()) ||
