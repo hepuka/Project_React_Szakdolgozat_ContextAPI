@@ -7,14 +7,17 @@
     align-items: center;
     flex-wrap: wrap;
     padding-top: 40px;
+    width: 100%;
 
     .users__cardList {
-
         display: flex;
         justify-content: flex-start;
         align-items: center;
         margin-top: 30px;
         gap: 30px;
+        width: 100%;
+        padding: 0 30px;
+
 
         .users__card {
             border: 1px solid lightgray;

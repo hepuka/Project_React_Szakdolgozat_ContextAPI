@@ -8,12 +8,10 @@
 .layout__content {
     grid-column: 1 / 4;
     grid-row: 1 / 4;
-    background-color: blueviolet;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
 }
 
 .footer {
