@@ -3,6 +3,7 @@ export const initialState = {
   userName: null,
   isActive: false,
   users: [],
+  products: [],
 };
 
 const reducer = (state, action) => {
@@ -29,6 +30,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         users: action.users,
+      };
+
+    case "STORE_PRODUCTS":
+      return {
+        ...state,
+        products: action.products,
       };
 
     default:

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Products.scss";
 import Layout from "../../components/Layout";
 import useFetchCollection from "../../customHooks/useFetchCollection";
@@ -8,10 +8,21 @@ import Notiflix from "notiflix";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { db, storage } from "../../firebase/config";
+import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Products = () => {
+  const [{ products }, dispatch] = useStateValue();
   const { data } = useFetchCollection("kunpaosproducts");
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    dispatch({
+      type: "STORE_PRODUCTS",
+      products: data,
+    });
+  }, []);
+
+  console.log(products);
 
   const filteredProducts = data.filter(
     (item) =>

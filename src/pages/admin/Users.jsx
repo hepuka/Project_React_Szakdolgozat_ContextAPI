@@ -9,7 +9,7 @@ import { db } from "../../firebase/config";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Users = () => {
-  const [{ userName, users }, dispatch] = useStateValue();
+  const [{ users }, dispatch] = useStateValue();
   const { data } = useFetchCollection("users");
   const [{ user }] = useStateValue();
 
@@ -18,7 +18,7 @@ const Users = () => {
       type: "STORE_USERS",
       users: data,
     });
-  });
+  }, []);
 
   const confirmDelete = (id) => {
     Notiflix.Confirm.show(
