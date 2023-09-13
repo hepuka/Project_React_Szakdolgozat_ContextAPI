@@ -12,9 +12,11 @@
     .products__search {
         margin-top: 50px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         width: 50%;
+
+        gap: 100px;
 
         p {
             font-size: 1.5rem;

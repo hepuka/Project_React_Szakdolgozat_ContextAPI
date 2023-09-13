@@ -21,9 +21,9 @@ const Products = () => {
       <div className="products">
         <h1>Termékek</h1>
         <div className="products__search">
-          <p>
-            <span>{data.length}</span> termék a listában
-          </p>
+          <h2>
+            <span>{data.length}</span> darab termék a listában
+          </h2>
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
         </div>
         <div className="products__cardlist">
