@@ -28,7 +28,7 @@ const Reset = () => {
 
   return (
     <div className="login">
-      <div className="login__container">
+      <div className="left">
         <h1>Elfelejtett jelszó</h1>
         <form onSubmit={resetPassword}>
           <label>Regisztrált e-mail</label>
@@ -45,13 +45,14 @@ const Reset = () => {
           <button type="submit" className="login__signInButton">
             Elküld
           </button>
+          <div className="login__resetSection">
+            <Link to="/">
+              <button className="login__resetButton">Vissza</button>
+            </Link>
+          </div>
         </form>
-        <div className="login__resetSection">
-          <Link to="/">
-            <button className="login__resetButton">Vissza</button>
-          </Link>
-        </div>
       </div>
+      <div className="right"></div>
     </div>
   );
 };
