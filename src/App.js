@@ -62,7 +62,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/register"
+            path="/register/:id"
             element={
               <ShowOnLogin>
                 <Register />

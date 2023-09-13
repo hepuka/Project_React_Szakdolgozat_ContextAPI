@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout";
 import "./Register.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import Notiflix from "notiflix";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/config";
+import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const categories = [
   { id: 1, name: "Admin" },
@@ -23,8 +24,24 @@ const initialSate = {
 };
 
 const Register = () => {
+  const { id } = useParams();
+  const [{ users }] = useStateValue();
+
+  const userEdit = users.find((item) => item.id === id);
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
+
+  const detectForm = (id, f1, f2) => {
+    if (id === "ADD") {
+      return f1;
+    } else {
+      return f2;
+    }
+  };
+
+  const [user, setUser] = useState(() => {
+    const newState = detectForm(id, { ...initialSate }, userEdit);
+    return newState;
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -68,11 +85,38 @@ const Register = () => {
     }
   };
 
+  const editUser = (e) => {
+    e.preventDefault();
+
+    try {
+      setDoc(doc(db, "users", id), {
+        name: user.name,
+        email: user.email,
+        tax: user.tax,
+        pin: user.pin,
+        role: user.role,
+        createdAt: userEdit.createdAt,
+        editedAt: Timestamp.now().toDate(),
+      });
+
+      Notiflix.Notify.success("Felhasználó adatai módosítva!");
+      navigate("/users");
+    } catch (error) {
+      Notiflix.Notify.failure(error.message);
+    }
+  };
+
   return (
     <Layout>
       <div className="register">
-        <h1>Új felhasználó regisztrálása</h1>
-        <form onSubmit={registerUser}>
+        <h1>
+          {detectForm(
+            id,
+            "Új felhasználó regisztrálása",
+            "Felhasználó adatainak módosítása"
+          )}
+        </h1>
+        <form onSubmit={detectForm(id, registerUser, editUser)}>
           <div className="register__row">
             <div className="register__box">
               <label>Felhasználó neve</label>
@@ -174,7 +218,7 @@ const Register = () => {
           </div>
 
           <button type="submit" className="login__signInButton">
-            Regisztráció
+            {detectForm(id, "Regisztráció", "Módosít")}
           </button>
         </form>
       </div>

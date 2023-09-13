@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../components/Layout";
 import "./Users.scss";
 import useFetchCollection from "../../customHooks/useFetchCollection";
@@ -9,8 +9,16 @@ import { db } from "../../firebase/config";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Users = () => {
+  const [{ userName, users }, dispatch] = useStateValue();
   const { data } = useFetchCollection("users");
   const [{ user }] = useStateValue();
+
+  useEffect(() => {
+    dispatch({
+      type: "STORE_USERS",
+      users: data,
+    });
+  });
 
   const confirmDelete = (id) => {
     Notiflix.Confirm.show(
@@ -76,9 +84,10 @@ const Users = () => {
                   </span>
                 </div>
                 <div className="users__buttons">
-                  <Link to={`/add-user/${item.id}`}>
+                  <Link to={`/register/${item.id}`}>
                     <button id="update">Módosít</button>
                   </Link>
+
                   <button id="delete" onClick={() => confirmDelete(item.id)}>
                     Töröl
                   </button>

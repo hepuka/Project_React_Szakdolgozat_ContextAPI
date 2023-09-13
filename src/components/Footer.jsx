@@ -6,7 +6,8 @@ const Footer = () => {
   return (
     <div className="footer">
       <h2>
-        &copy; 2022 - {year}, Created by Zoltan KUN-FAGYAL - All Rights Reserved
+        &copy; 2022 - {year}, Készítette: Kun-Fagyal Zoltán mérnökinformatikus -
+        Minden jog fenntartva!
       </h2>
     </div>
   );

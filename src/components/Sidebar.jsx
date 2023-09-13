@@ -38,7 +38,7 @@ const Sidebar = () => {
             Felhasználók
           </NavLink>
 
-          <NavLink to="/register" className={activeLink}>
+          <NavLink to="/register/ADD" className={activeLink}>
             Új felhasználó regisztrálása
           </NavLink>
 
@@ -46,7 +46,7 @@ const Sidebar = () => {
             Termékek
           </NavLink>
 
-          <NavLink to="/add-product/:id" className={activeLink}>
+          <NavLink to="/add-product/ADD" className={activeLink}>
             Új termék hozzáadása
           </NavLink>
 
