@@ -39,11 +39,12 @@
         padding: 0 30px;
 
         .products__card {
+            position: relative;
             border: 1px solid lightgray;
             border-radius: 10px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             width: 322px;
-            height: 500px;
+            height: 555px;
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
@@ -74,6 +75,43 @@
                     text-align: justify;
                     padding-top: 15px;
                 }
+            }
+
+            .products__buttons {
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                gap: 40px;
+                margin-top: 20px;
+
+                #update {
+                    background: $buttonBackground;
+                    border-radius: 2px;
+                    width: 107.39px;
+                    height: 30px;
+                    border: 1px solid;
+                    margin-top: 10px;
+                    border-color: $borderColor;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                #delete {
+                    width: 30%;
+                    height: 30px;
+                    border: 1px solid;
+                    margin-top: 10px;
+                    border-color: darkgray;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    background-color: red;
+                    color: white;
+                }
+
             }
         }
     }

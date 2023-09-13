@@ -3,6 +3,11 @@ import "./Products.scss";
 import Layout from "../../components/Layout";
 import useFetchCollection from "../../customHooks/useFetchCollection";
 import Search from "../../components/Search";
+import { Link } from "react-router-dom";
+import Notiflix from "notiflix";
+import { deleteDoc, doc } from "firebase/firestore";
+import { deleteObject, ref } from "firebase/storage";
+import { db, storage } from "../../firebase/config";
 
 const Products = () => {
   const { data } = useFetchCollection("kunpaosproducts");
@@ -14,7 +19,41 @@ const Products = () => {
       item.category.toLowerCase().includes(search.toLowerCase())
   );
 
-  console.log(filteredProducts);
+  const confirmDelete = (id, imageURL) => {
+    Notiflix.Confirm.show(
+      "Delete Product!",
+      "You are about to delete this product.",
+      "Delete",
+      "Cancel",
+
+      function okCb() {
+        deleteProduct(id, imageURL);
+      },
+
+      function cancelCb() {
+        console.log("Delete Canceled!");
+      },
+      {
+        width: "320px",
+        borderRadius: "8px",
+        titleColor: "red",
+        okButtonBackground: "red",
+        cssAnimationStyle: "zoom",
+      }
+    );
+  };
+
+  const deleteProduct = async (id, imageURL) => {
+    try {
+      await deleteDoc(doc(db, "products", id));
+      const storageRef = ref(storage, imageURL);
+      await deleteObject(storageRef);
+
+      Notiflix.Notify.success("Sikeres termék törlés!");
+    } catch (error) {
+      Notiflix.Notify.failure(error.message);
+    }
+  };
 
   return (
     <Layout>
@@ -53,6 +92,18 @@ const Products = () => {
                     <div className="products__rows">
                       <p className="descinfo">Leírás: {item.desc}</p>
                     </div>
+                  </div>
+
+                  <div className="products__buttons">
+                    <Link to={`/add-product/${item.id}`}>
+                      <button id="update">Módosít</button>
+                    </Link>
+                    <button
+                      id="delete"
+                      onClick={() => confirmDelete(item.id, item.imageURL)}
+                    >
+                      Töröl
+                    </button>
                   </div>
                 </div>
               );
