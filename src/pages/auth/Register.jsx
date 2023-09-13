@@ -73,98 +73,105 @@ const Register = () => {
       <div className="register">
         <h1>Új felhasználó regisztrálása</h1>
         <form onSubmit={registerUser}>
-          <label>Felhasználó neve</label>
-          <input
-            type="text"
-            required
-            name="name"
-            value={user.name}
-            onChange={(e) => handleInputChange(e)}
-          />
-          <label>Születési idő</label>
-          <input
-            type="date"
-            required
-            name="bdate"
-            value={user.bdate}
-            onChange={(e) => handleInputChange(e)}
-          />
-          <label>Születési hely</label>
-          <input
-            type="text"
-            required
-            name="bplace"
-            value={user.bplace}
-            onChange={(e) => handleInputChange(e)}
-          />
-          <label>E-mail</label>
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            required
-            onChange={(e) => handleInputChange(e)}
-          />
+          <div className="register__row">
+            <div className="register__box">
+              <label>Felhasználó neve</label>
+              <input
+                type="text"
+                required
+                name="name"
+                value={user.name}
+                onChange={(e) => handleInputChange(e)}
+              />
+              <label>Születési idő</label>
+              <input
+                type="date"
+                required
+                name="bdate"
+                value={user.bdate}
+                onChange={(e) => handleInputChange(e)}
+              />
+              <label>Születési hely</label>
+              <input
+                type="text"
+                required
+                name="bplace"
+                value={user.bplace}
+                onChange={(e) => handleInputChange(e)}
+              />
+            </div>
+            <div className="register__box">
+              <label>E-mail</label>
+              <input
+                type="email"
+                name="email"
+                value={user.email}
+                required
+                onChange={(e) => handleInputChange(e)}
+              />
 
-          <label>Jelszó</label>
-          <input
-            type="password"
-            name="password"
-            minLength={8}
-            value={user.password}
-            required
-            onChange={(e) => handleInputChange(e)}
-          />
+              <label>Jelszó</label>
+              <input
+                type="password"
+                name="password"
+                minLength={8}
+                value={user.password}
+                required
+                onChange={(e) => handleInputChange(e)}
+              />
 
-          <label>Adja meg újra a jelszót</label>
-          <input
-            type="password"
-            name="passwordConfirm"
-            value={user.passwordConfirm}
-            required
-            minLength={8}
-            onChange={(e) => handleInputChange(e)}
-          />
-
-          <label>Jogosultság</label>
-          <select
-            required
-            name="role"
-            value={user.role}
-            onChange={(e) => handleInputChange(e)}
-          >
-            <option value="" disabled>
-              -- Válassz jogosultságot --
-            </option>
-            {categories.map((item) => {
-              return (
-                <option key={item.id} value={item.name}>
-                  {item.name}
+              <label>Adja meg újra a jelszót</label>
+              <input
+                type="password"
+                name="passwordConfirm"
+                value={user.passwordConfirm}
+                required
+                minLength={8}
+                onChange={(e) => handleInputChange(e)}
+              />
+            </div>
+            <div className="register__box">
+              <label>Jogosultság</label>
+              <select
+                required
+                name="role"
+                value={user.role}
+                onChange={(e) => handleInputChange(e)}
+              >
+                <option value="" disabled>
+                  -- Válassz jogosultságot --
                 </option>
-              );
-            })}
-          </select>
+                {categories.map((item) => {
+                  return (
+                    <option key={item.id} value={item.name}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+              </select>
 
-          <label>Felhasználó adószáma</label>
-          <input
-            type="text"
-            required
-            minLength={8}
-            maxLength={8}
-            name="tax"
-            value={user.tax}
-            onChange={(e) => handleInputChange(e)}
-          />
-          <label>PIN kód</label>
-          <input
-            type="text"
-            required
-            minLength={4}
-            maxLength={4}
-            name="pin"
-            value={user.pin}
-            onChange={(e) => handleInputChange(e)}
-          />
+              <label>Felhasználó adószáma</label>
+              <input
+                type="text"
+                required
+                minLength={8}
+                maxLength={8}
+                name="tax"
+                value={user.tax}
+                onChange={(e) => handleInputChange(e)}
+              />
+              <label>PIN kód</label>
+              <input
+                type="text"
+                required
+                minLength={4}
+                maxLength={4}
+                name="pin"
+                value={user.pin}
+                onChange={(e) => handleInputChange(e)}
+              />
+            </div>
+          </div>
 
           <button type="submit" className="login__signInButton">
             Regisztráció
