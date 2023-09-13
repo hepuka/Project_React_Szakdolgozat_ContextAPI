@@ -32,3 +32,13 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
+
+.sidebar__container::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar__containerb {
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

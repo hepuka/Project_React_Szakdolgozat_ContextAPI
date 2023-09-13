@@ -1,13 +1,5 @@
 @import "../../index.scss";
 
-.layout__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100vh;
-}
-
 .users {
     display: flex;
     justify-content: flex-start;

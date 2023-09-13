@@ -1,12 +1,10 @@
 @import "../../index.scss";
 
 .admin {
-    text-align: center;
-
-    img {
-        width: 500px;
-        height: 500px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     h1 {
         font-size: 5rem;

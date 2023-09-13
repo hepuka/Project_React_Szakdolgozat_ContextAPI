@@ -1,0 +1,24 @@
+.gridlayout {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 0.3fr;
+}
+
+.gridcontent {
+    background-color: blue;
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+}
+
+.gridsidebar {
+    background-color: green;
+    grid-column: 4 / 5;
+    grid-row: 1 / 6;
+}
+
+.gridfooter {
+    background-color: yellow;
+    grid-column: 1 / 4;
+    grid-row: 4 / 5;
+}
