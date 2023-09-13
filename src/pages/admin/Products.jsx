@@ -21,10 +21,10 @@ const Products = () => {
 
   const confirmDelete = (id, imageURL) => {
     Notiflix.Confirm.show(
-      "Delete Product!",
-      "You are about to delete this product.",
-      "Delete",
-      "Cancel",
+      "Termék törlése!",
+      "Valóban törölni akarja a terméket?",
+      "Törlés",
+      "Mégse",
 
       function okCb() {
         deleteProduct(id, imageURL);

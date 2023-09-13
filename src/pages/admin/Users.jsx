@@ -14,10 +14,10 @@ const Users = () => {
 
   const confirmDelete = (id) => {
     Notiflix.Confirm.show(
-      "Delete User!",
-      "You are about to delete this user.",
-      "Delete",
-      "Cancel",
+      "Felhasználó törlése!",
+      "Valóban törölni akarja a felhasználót?",
+      "Törlés",
+      "Mégse",
 
       function okCb() {
         deleteUser(id);
