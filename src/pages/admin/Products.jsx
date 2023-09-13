@@ -20,7 +20,7 @@ const Products = () => {
       type: "STORE_PRODUCTS",
       products: data,
     });
-  }, []);
+  }, [data]);
 
   console.log(products);
 

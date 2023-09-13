@@ -18,7 +18,9 @@ const Users = () => {
       type: "STORE_USERS",
       users: data,
     });
-  }, []);
+  }, [data]);
+
+  console.log(users);
 
   const confirmDelete = (id) => {
     Notiflix.Confirm.show(

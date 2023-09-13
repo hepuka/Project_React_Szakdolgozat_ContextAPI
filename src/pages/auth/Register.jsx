@@ -26,7 +26,6 @@ const initialSate = {
 const Register = () => {
   const { id } = useParams();
   const [{ users }] = useStateValue();
-
   const userEdit = users.find((item) => item.id === id);
   const navigate = useNavigate();
 
