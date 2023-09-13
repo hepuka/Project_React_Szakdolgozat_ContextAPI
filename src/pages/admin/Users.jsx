@@ -24,7 +24,7 @@ const Users = () => {
       },
 
       function cancelCb() {
-        console.log("Delete Canceled!");
+        console.log("Törlés elutasítva!");
       },
       {
         width: "320px",
