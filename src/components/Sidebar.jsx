@@ -63,7 +63,7 @@ const Sidebar = () => {
           </NavLink>
 
           <div className="sidebar__buttons">
-            {userName === "Admin" ? (
+            {userName === "Admin" || userName === "Manager" ? (
               <NavLink to="/admin" className="sidebar__button">
                 Főoldal
               </NavLink>

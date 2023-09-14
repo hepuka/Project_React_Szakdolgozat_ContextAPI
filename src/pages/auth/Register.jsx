@@ -103,6 +103,8 @@ const Register = () => {
         password: user.password,
       });
 
+      updateProfile(auth.currentUser, { displayName: user.name });
+
       Notiflix.Notify.success("Felhasználó adatai módosítva!");
       navigate("/users");
     } catch (error) {
