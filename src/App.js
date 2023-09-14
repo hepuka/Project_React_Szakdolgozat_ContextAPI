@@ -5,7 +5,7 @@ import Reset from "./pages/auth/Reset";
 import Employees from "./pages/employees/Employees";
 import { auth } from "./firebase/config";
 import { useStateValue } from "./ContextAPI/StateProvider";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Admin from "./pages/admin/Admin";
 import Users from "./pages/admin/Users";
 import Register from "./pages/auth/Register";

@@ -8,7 +8,7 @@ import { signOut } from "firebase/auth";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
-  const [{ userName, currUser }] = useStateValue();
+  const [{ user, userName }] = useStateValue();
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <h1>Bejentkezve: {currUser}</h1>
+        <h1>Bejentkezve: {user.displayName}</h1>
 
         <div className="sidebar__buttons">
           <NavLink to="/users" className={activeLink}>

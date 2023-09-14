@@ -26,8 +26,8 @@ const Login = () => {
           currUserData: currUserD,
         });
 
-        console.log(user);
-        console.log(currUserD);
+        // console.log(user);
+        // console.log(currUserD);
 
         updateProfile(auth.currentUser, { displayName: currUserD.name });
 
