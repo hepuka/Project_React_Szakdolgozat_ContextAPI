@@ -20,8 +20,6 @@ const Users = () => {
     });
   }, [data]);
 
-  console.log(users);
-
   const confirmDelete = (id) => {
     Notiflix.Confirm.show(
       "Felhasználó törlése!",

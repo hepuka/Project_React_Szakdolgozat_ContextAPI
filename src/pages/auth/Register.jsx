@@ -21,6 +21,8 @@ const initialSate = {
   tax: "",
   pin: "",
   role: "",
+  bdate: "",
+  bplace: "",
 };
 
 const Register = () => {
@@ -96,6 +98,9 @@ const Register = () => {
         role: user.role,
         createdAt: userEdit.createdAt,
         editedAt: Timestamp.now().toDate(),
+        bdate: user.bdate,
+        bplace: user.bplace,
+        password: user.password,
       });
 
       Notiflix.Notify.success("Felhasználó adatai módosítva!");

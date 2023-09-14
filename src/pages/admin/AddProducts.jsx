@@ -32,7 +32,6 @@ const AddProducts = () => {
   const { id } = useParams();
   const [{ products }] = useStateValue();
   const productEdit = products.find((item) => item.id === id);
-  console.log(products);
   const [uploadProgress, setUploadProgress] = useState(0);
   const navigate = useNavigate();
 

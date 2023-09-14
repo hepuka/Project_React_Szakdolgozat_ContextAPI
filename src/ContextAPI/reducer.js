@@ -24,7 +24,6 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
         userName: uName,
-        isActive: true,
       };
 
     case "STORE_USERS":

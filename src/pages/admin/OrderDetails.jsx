@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Layout from "../../components/Layout";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -9,9 +9,6 @@ const OrderDetails = () => {
   const { id } = useParams();
   const [{ orders }] = useStateValue();
   const order = orders.find((item) => item.id === id);
-
-  console.log(orders);
-  console.log(order);
 
   return (
     <Layout>
