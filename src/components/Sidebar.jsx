@@ -8,7 +8,7 @@ import { signOut } from "firebase/auth";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
-  const [{ userName }] = useStateValue();
+  const [{ user, userName }] = useStateValue();
   const navigate = useNavigate();
 
   const logoutUser = () => {
@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <h1>Bejentkezve: {userName}</h1>
+        <h1>Bejentkezve: {user.displayName}</h1>
 
         <div className="sidebar__buttons">
           <NavLink to="/users" className={activeLink}>
@@ -77,8 +77,6 @@ const Sidebar = () => {
               Kilépés
             </div>
           </div>
-
-          {/* isactive beállítani a régi szakdolg.header fájl*/}
         </div>
       </div>
     </div>

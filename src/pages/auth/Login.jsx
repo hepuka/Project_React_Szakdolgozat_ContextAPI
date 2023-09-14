@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import Notiflix from "notiflix";
 import "./Auth.scss";
+import useFetchCollection from "../../customHooks/useFetchCollection";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const data = useFetchCollection("users");
 
   const signIn = (e) => {
     e.preventDefault();
+    const currUser = data.find((item) => item.email === email);
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const userEmail = user.email.substring(0, user.email.indexOf("@"));
+        updateProfile(auth.currentUser, { displayName: currUser.name });
+
         Notiflix.Notify.success("Sikeres bejelentkezés!");
 
-        userEmail === "admin" || userEmail === "manager"
+        currUser.role === "Admin" || currUser.role === "Manager"
           ? navigate("/admin")
           : navigate("/employees");
       })
