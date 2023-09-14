@@ -36,8 +36,8 @@ const OrderDetails = () => {
                   <th>Sorszám</th>
                   <th>Termék neve</th>
                   <th>Egységár (Ft)</th>
-                  <th>Mennyiség</th>
-                  <th>Végösszeg</th>
+                  <th>Mennyiség (db)</th>
+                  <th>Végösszeg (Ft)</th>
                 </tr>
               </thead>
               <tbody>
