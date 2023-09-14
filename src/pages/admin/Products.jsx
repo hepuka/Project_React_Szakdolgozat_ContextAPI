@@ -54,7 +54,7 @@ const Products = () => {
 
   const deleteProduct = async (id, imageURL) => {
     try {
-      await deleteDoc(doc(db, "products", id));
+      await deleteDoc(doc(db, "kunpaosproducts", id));
       const storageRef = ref(storage, imageURL);
       await deleteObject(storageRef);
 
