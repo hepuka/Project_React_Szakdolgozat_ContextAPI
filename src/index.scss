@@ -2,8 +2,10 @@ $font-color: #190019;
 $dark: #765850;
 $light: #C8B1A5;
 $buttonBackground: #f0c14b;
+$deleteBackground: red;
+$deleteColor: white;
 $borderColor: #a88734 #9c7e31 #846a29;
-
+$activeStatus: green;
 
 * {
     margin: 0;
@@ -26,6 +28,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(to top, white, $dark);
 
+}
+
+h1 {
+    color: $font-color;
 }
 
 code {

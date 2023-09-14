@@ -21,7 +21,7 @@
 
 
         .users__card {
-            border: 1px solid lightgray;
+            border: 1px solid $borderColor;
             border-radius: 10px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             width: 322px;
@@ -30,11 +30,11 @@
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
-            color: black;
-            font-size: 2rem;
+            color: $font-color;
+            font-size: 1.5rem;
             text-align: center;
             padding: 0 10px;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
 
             .users__rows {
                 display: flex;
@@ -46,12 +46,12 @@
                 }
 
                 .active {
-                    color: $buttonBackground;
+                    color: $activeStatus;
                     font-weight: 600;
                 }
 
                 .inactive {
-                    color: red;
+                    color: $deleteBackground;
                     font-weight: 600;
                 }
             }
@@ -81,11 +81,11 @@
                     height: 30px;
                     border: 1px solid;
                     margin-top: 10px;
-                    border-color: darkgray;
+                    border-color: $borderColor;
                     cursor: pointer;
                     border-radius: 4px;
-                    background-color: red;
-                    color: white;
+                    background-color: $deleteBackground;
+                    color: $deleteColor;
                 }
 
             }
