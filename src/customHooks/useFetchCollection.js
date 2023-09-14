@@ -28,7 +28,7 @@ const useFetchCollection = (collectionName) => {
     getCollection();
   }, []);
 
-  return { data };
+  return data;
 };
 
 export default useFetchCollection;

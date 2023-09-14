@@ -13,6 +13,7 @@ import Products from "./pages/admin/Products";
 import AddProducts from "./pages/admin/AddProducts";
 import Orders from "./pages/admin/Orders";
 import OrderDetails from "./pages/admin/OrderDetails";
+import Business from "./pages/admin/Business";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -101,6 +102,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <OrderDetails />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/business"
+            element={
+              <ShowOnLogin>
+                <Business />
               </ShowOnLogin>
             }
           ></Route>

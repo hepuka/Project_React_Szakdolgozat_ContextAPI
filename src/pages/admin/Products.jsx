@@ -12,7 +12,7 @@ import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Products = () => {
   const [{ products }, dispatch] = useStateValue();
-  const { data } = useFetchCollection("kunpaosproducts");
+  const data = useFetchCollection("kunpaosproducts");
   const [search, setSearch] = useState("");
 
   useEffect(() => {

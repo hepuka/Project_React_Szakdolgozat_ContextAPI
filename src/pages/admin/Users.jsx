@@ -10,7 +10,7 @@ import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Users = () => {
   const [{ users }, dispatch] = useStateValue();
-  const { data } = useFetchCollection("users");
+  const data = useFetchCollection("users");
   const [{ user }] = useStateValue();
 
   useEffect(() => {

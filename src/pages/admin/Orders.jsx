@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
   const [{ orders }, dispatch] = useStateValue();
-  const { data } = useFetchCollection("kunpaosorders");
+  const data = useFetchCollection("kunpaosorders");
   const navigate = useNavigate();
 
   useEffect(() => {
