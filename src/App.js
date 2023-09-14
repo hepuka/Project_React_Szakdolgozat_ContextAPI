@@ -14,6 +14,7 @@ import AddProducts from "./pages/admin/AddProducts";
 import Orders from "./pages/admin/Orders";
 import OrderDetails from "./pages/admin/OrderDetails";
 import Business from "./pages/admin/Business";
+import Contact from "./pages/admin/Contact";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -110,6 +111,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <Business />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/contact"
+            element={
+              <ShowOnLogin>
+                <Contact />
               </ShowOnLogin>
             }
           ></Route>
