@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useStateValue } from "../ContextAPI/StateProvider";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { signOut } from "firebase/auth";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
-  const [{ user, userName }] = useStateValue();
+  const [{ user, userName, currUser }] = useStateValue();
   const navigate = useNavigate();
 
   const logoutUser = () => {

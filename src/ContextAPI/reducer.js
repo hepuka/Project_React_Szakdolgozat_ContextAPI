@@ -5,6 +5,7 @@ export const initialState = {
   users: [],
   products: [],
   orders: [],
+  currUserData: [],
 };
 
 const reducer = (state, action) => {
@@ -27,9 +28,18 @@ const reducer = (state, action) => {
       };
 
     case "SET_CURRUSER":
+      let currData = "";
+
+      if (action.currUserData) {
+        currData = action.currUserData.find(
+          (item) => item.email === action.user.email
+        );
+      }
+
       return {
         ...state,
-        currUser: action.currUser,
+        currUserData: action.currUserData,
+        currUser: currData,
       };
 
     case "STORE_USERS":

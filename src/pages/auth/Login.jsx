@@ -1,36 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import Notiflix from "notiflix";
 import "./Auth.scss";
 import useFetchCollection from "../../customHooks/useFetchCollection";
-import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const data = useFetchCollection("users");
-  const currUser = data.find((item) => item.email === email);
-  const [{ user }, dispatch] = useStateValue();
+  const currUserData = data.find((item) => item.email === email);
 
   const signIn = (e) => {
     e.preventDefault();
 
-    dispatch({
-      type: "SET_CURRUSER",
-      currUser: currUser,
-    });
-
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // const user = userCredential.user;
-        updateProfile(auth.currentUser, { displayName: currUser.name });
+        const user = userCredential.user;
+        // console.log(user);
+        // console.log(currUserData);
+
+        updateProfile(auth.currentUser, { displayName: currUserData.name });
 
         Notiflix.Notify.success("Sikeres bejelentkezés!");
 
-        currUser.role === "Admin" || currUser.role === "Manager"
+        currUserData.role === "Admin" || currUserData.role === "Manager"
           ? navigate("/admin")
           : navigate("/employees");
       })

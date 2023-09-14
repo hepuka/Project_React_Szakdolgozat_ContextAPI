@@ -18,8 +18,8 @@ import Contact from "./pages/admin/Contact";
 import useFetchCollection from "./customHooks/useFetchCollection";
 
 function App() {
+  const [{ user, currUser, currUserData }, dispatch] = useStateValue();
   const data = useFetchCollection("users");
-  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -34,6 +34,11 @@ function App() {
           user: null,
         });
       }
+    });
+
+    dispatch({
+      type: "SET_CURRUSER",
+      currUserData: data,
     });
   }, []);
 
