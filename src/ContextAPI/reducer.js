@@ -1,11 +1,11 @@
 export const initialState = {
   user: null,
   userName: null,
-  currUser: null,
+  currUser: "",
   users: [],
   products: [],
   orders: [],
-  currUserData: [],
+  currUserData: null,
 };
 
 const reducer = (state, action) => {
@@ -28,19 +28,13 @@ const reducer = (state, action) => {
       };
 
     case "SET_CURRUSER":
-      let currData = "";
-
       if (action.currUserData) {
-        currData = action.currUserData.find(
-          (item) => item.email === action.user.email
-        );
+        return {
+          ...state,
+          currUserData: action.currUserData,
+          currUser: action.currUserData.name,
+        };
       }
-
-      return {
-        ...state,
-        currUserData: action.currUserData,
-        currUser: currData,
-      };
 
     case "STORE_USERS":
       return {
