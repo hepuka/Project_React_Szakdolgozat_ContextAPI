@@ -5,20 +5,27 @@ import { auth } from "../../firebase/config";
 import Notiflix from "notiflix";
 import "./Auth.scss";
 import useFetchCollection from "../../customHooks/useFetchCollection";
+import { useStateValue } from "../../ContextAPI/StateProvider";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const data = useFetchCollection("users");
+  const currUser = data.find((item) => item.email === email);
+  const [{ user }, dispatch] = useStateValue();
 
   const signIn = (e) => {
     e.preventDefault();
-    const currUser = data.find((item) => item.email === email);
+
+    dispatch({
+      type: "SET_CURRUSER",
+      currUser: currUser,
+    });
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        // const user = userCredential.user;
         updateProfile(auth.currentUser, { displayName: currUser.name });
 
         Notiflix.Notify.success("Sikeres bejelentkezés!");

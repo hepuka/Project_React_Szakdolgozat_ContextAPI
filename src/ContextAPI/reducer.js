@@ -1,7 +1,7 @@
 export const initialState = {
   user: null,
   userName: null,
-  currUserName: null,
+  currUser: null,
   users: [],
   products: [],
   orders: [],
@@ -26,10 +26,10 @@ const reducer = (state, action) => {
         userName: uName,
       };
 
-    case "SET_CURRUSERNAME":
+    case "SET_CURRUSER":
       return {
         ...state,
-        currUserName: action.currUserName,
+        currUser: action.currUser,
       };
 
     case "STORE_USERS":

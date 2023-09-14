@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout";
 import "./Register.scss";
 import { useNavigate, useParams } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import Notiflix from "notiflix";
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
@@ -60,7 +60,7 @@ const Register = () => {
     try {
       createUserWithEmailAndPassword(auth, user.email, user.password).then(
         (userCredential) => {
-          const user = userCredential.user;
+          // const user = userCredential.user;
         }
       );
 

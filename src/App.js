@@ -15,8 +15,10 @@ import Orders from "./pages/admin/Orders";
 import OrderDetails from "./pages/admin/OrderDetails";
 import Business from "./pages/admin/Business";
 import Contact from "./pages/admin/Contact";
+import useFetchCollection from "./customHooks/useFetchCollection";
 
 function App() {
+  const data = useFetchCollection("users");
   const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
