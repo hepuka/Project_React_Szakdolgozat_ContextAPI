@@ -76,7 +76,7 @@ const Users = () => {
                   <p>Adószám: </p> <span>{item.tax}</span>
                 </div>
                 <div className="users__rows">
-                  <p>Státusz: </p>{" "}
+                  <p>Státusz: </p>
                   <span
                     className={
                       item.email === user.email ? "active" : "inactive"
