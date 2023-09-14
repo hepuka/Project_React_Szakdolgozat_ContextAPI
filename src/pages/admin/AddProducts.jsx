@@ -142,7 +142,7 @@ const AddProducts = () => {
         </h1>
         <form onSubmit={detectForm(id, addProduct, editProduct)}>
           <div className="addProduct__row">
-            <div className="addProduct__box">
+            <div className="addProduct__box ">
               <label>Termék neve</label>
               <input
                 type="text"
@@ -181,6 +181,8 @@ const AddProducts = () => {
                   disabled
                 />
               )}
+            </div>
+            <div className="addProduct__box ">
               <label>Egységár (Ft)</label>
               <input
                 type="text"
@@ -189,48 +191,48 @@ const AddProducts = () => {
                 value={product.price}
                 onChange={(e) => handleInputChange(e)}
               />
-              <div className="addProduct__box">
-                <label>Kategória</label>
-                <select
-                  required
-                  name="category"
-                  value={product.category}
-                  onChange={(e) => handleInputChange(e)}
-                >
-                  <option value="" disabled>
-                    -- Válassz kategóriát --
-                  </option>
-                  {categories.map((item) => {
-                    return (
-                      <option key={item.id} value={item.name}>
-                        {item.name}
-                      </option>
-                    );
-                  })}
-                </select>
-
-                <label>Mennyiség</label>
-                <input
-                  type="text"
-                  required
-                  name="packaging"
-                  value={product.packaging}
-                  onChange={(e) => handleInputChange(e)}
-                />
-
-                <label>Termék leírása</label>
-                <textarea
-                  name="desc"
-                  value={product.desc}
-                  required
-                  onChange={(e) => handleInputChange(e)}
-                  cols="30"
-                  rows="10"
-                ></textarea>
-              </div>
+              <label>Kategória</label>
+              <select
+                required
+                name="category"
+                value={product.category}
+                onChange={(e) => handleInputChange(e)}
+              >
+                <option value="" disabled>
+                  -- Válassz kategóriát --
+                </option>
+                {categories.map((item) => {
+                  return (
+                    <option key={item.id} value={item.name}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="addProduct__box">
+              {" "}
+              <label>Mennyiség</label>
+              <input
+                type="text"
+                required
+                name="packaging"
+                value={product.packaging}
+                onChange={(e) => handleInputChange(e)}
+              />
+              <label>Termék leírása</label>
+              <textarea
+                name="desc"
+                value={product.desc}
+                required
+                onChange={(e) => handleInputChange(e)}
+                cols="30"
+                rows="10"
+              ></textarea>
             </div>
           </div>
-          <button className="login__signInButton">
+
+          <button type="submit" className="login__signInButton">
             {detectForm(id, "Hozzáad", "Módosít")}
           </button>
         </form>
