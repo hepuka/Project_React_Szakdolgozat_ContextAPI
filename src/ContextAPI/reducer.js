@@ -5,9 +5,12 @@ export const initialState = {
   userPin: null,
   currUser: "",
   users: [],
+  product: [],
   products: [],
   orders: [],
+  tempProducts: [],
   currUserData: null,
+  category: null,
 };
 
 const reducer = (state, action) => {
@@ -52,6 +55,21 @@ const reducer = (state, action) => {
       return {
         ...state,
         orders: action.orders,
+      };
+
+    case "SET_CATEGORY":
+      if (action.category === "Összes") {
+        state.tempProducts = action.product;
+      } else {
+        state.tempProducts = state.product.filter(
+          (product) => product.category === action.category
+        );
+      }
+
+      return {
+        ...state,
+        product: action.product,
+        category: action.category,
       };
 
     default:
