@@ -35,10 +35,7 @@ const Login = () => {
         });
 
         Notiflix.Notify.success("Sikeres bejelentkezés!");
-
-        currUserD.role === "Admin" || currUserD.role === "Manager"
-          ? navigate("/admin")
-          : navigate("/employees");
+        navigate("/admin");
       })
       .catch((error) => {
         Notiflix.Notify.failure(error.message);

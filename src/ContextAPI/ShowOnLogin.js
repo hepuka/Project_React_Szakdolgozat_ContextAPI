@@ -8,6 +8,7 @@ const ShowOnLogin = ({ children }) => {
   if (user) {
     return children;
   }
+
   navigate("/");
 };
 

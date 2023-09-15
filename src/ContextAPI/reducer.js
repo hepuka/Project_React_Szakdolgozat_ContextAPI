@@ -1,6 +1,8 @@
 export const initialState = {
   user: null,
   userName: null,
+  userRole: null,
+  userPin: null,
   currUser: "",
   users: [],
   products: [],
@@ -11,20 +13,18 @@ export const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_USER":
-      let uName = "";
+      let parts = "";
 
       if (action.user) {
-        const userEmail = action.user.email.substring(
-          0,
-          action.user.email.indexOf("@")
-        );
-        uName = userEmail.charAt(0).toUpperCase() + userEmail.slice(1);
+        parts = action.user.displayName.split("|");
       }
 
       return {
         ...state,
         user: action.user,
-        userName: uName,
+        userName: parts[0],
+        userRole: parts[1],
+        userPin: parts[2],
       };
 
     case "SET_CURRUSER":
