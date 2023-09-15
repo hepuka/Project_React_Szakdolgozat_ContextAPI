@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Placeorder.scss";
 import Layout from "../../components/Layout";
 import { useParams } from "react-router-dom";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import { NavLink } from "react-router-dom";
+import useFetchCollection from "../../customHooks/useFetchCollection";
 
 const Placeorder = () => {
   const { id } = useParams();
   const [{ user, userName }] = useStateValue();
+  const products = useFetchCollection("kunpaosproducts");
+  const [category, setCategory] = useState("Összes");
+
+  const allCategories = [
+    "Összes",
+    ...new Set(products.map((item) => item.category)),
+  ];
+  const filterProducts = (category) => {
+    setCategory(category);
+
+    // dispatch(FILTER_BY_CATEGORY({ products, category: category }));
+  };
 
   const activeLink = ({ isActive }) => {
     return isActive
@@ -25,7 +38,19 @@ const Placeorder = () => {
 
         <div className="placeorder__card placeorder__tablebuttons">
           <div className="sidebar__buttons">
-            <NavLink to="/" className={activeLink}>
+            {allCategories.map((item, index) => {
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  className={activeLink}
+                  onClick={() => filterProducts(item)}
+                >
+                  {item}
+                </button>
+              );
+            })}
+            {/* <NavLink to="/" className={activeLink}>
               Összes
             </NavLink>
 
@@ -51,7 +76,7 @@ const Placeorder = () => {
 
             <NavLink to="/" className={activeLink}>
               Péksütemények
-            </NavLink>
+            </NavLink> */}
           </div>
         </div>
         <div className="placeorder__card placeorder__tableproducts"> </div>

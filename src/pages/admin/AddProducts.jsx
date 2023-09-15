@@ -17,6 +17,9 @@ const categories = [
   { id: 1, name: "Kávé" },
   { id: 2, name: "Italok" },
   { id: 3, name: "Sütemények" },
+  { id: 4, name: "Gyümölcslevek" },
+  { id: 5, name: "Tea" },
+  { id: 6, name: "Péksütemények" },
 ];
 
 const initialSate = {
