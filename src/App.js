@@ -115,7 +115,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/placeorder"
+            path="/placeorder/:id"
             element={
               <ShowOnLogin>
                 <Placeorder />
