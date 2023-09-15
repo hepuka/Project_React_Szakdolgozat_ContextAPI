@@ -10,7 +10,7 @@ import "./Sidebar.scss";
 const Sidebar = () => {
   const [{ user }] = useStateValue();
   const navigate = useNavigate();
-  const parts = String(user.displayName).split("|");
+  const parts = String(user.displayName).split("|"); //tömböt ad vissza
 
   const logoutUser = () => {
     signOut(auth)
