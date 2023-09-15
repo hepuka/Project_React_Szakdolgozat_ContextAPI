@@ -26,6 +26,7 @@ const Orders = () => {
       <div className="orders">
         <h1>Összes megrendelés</h1>
         <h2>Válassz egy rendelést a részletek megtekintésére</h2>
+
         <div className="orders__cardlist">
           {data.length === 0 ? (
             <p>Nincs regisztrált megrendelés</p>
