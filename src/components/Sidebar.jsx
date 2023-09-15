@@ -70,6 +70,10 @@ const Sidebar = () => {
               Asztalok
             </NavLink>
 
+            <NavLink to="/products" className={activeLink}>
+              Termékek
+            </NavLink>
+
             <NavLink to="/orders" className={activeLink}>
               Összes rendelés
             </NavLink>
