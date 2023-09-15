@@ -29,7 +29,10 @@ const Login = () => {
         console.log(user);
         console.log(currUserD);
 
-        // updateProfile(auth.currentUser, { displayName: currUserD.name });
+        updateProfile(auth.currentUser, {
+          displayName:
+            currUserD.name + "|" + currUserD.role + "|" + currUserD.pin,
+        });
 
         Notiflix.Notify.success("Sikeres bejelentkezés!");
 

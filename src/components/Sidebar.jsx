@@ -8,8 +8,9 @@ import { signOut } from "firebase/auth";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
-  const [{ user, userName }] = useStateValue();
+  const [{ user }] = useStateValue();
   const navigate = useNavigate();
+  const parts = String(user.displayName).split("|");
 
   const logoutUser = () => {
     signOut(auth)
@@ -31,7 +32,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <h1>Bejentkezve: {user.displayName}</h1>
+        <h1>Bejentkezve: {parts[0]}</h1>
 
         <div className="sidebar__buttons">
           <NavLink to="/users" className={activeLink}>
@@ -63,7 +64,7 @@ const Sidebar = () => {
           </NavLink>
 
           <div className="sidebar__buttons">
-            {userName === "Admin" || userName === "Manager" ? (
+            {parts[1] === "Admin" || parts[1] === "Manager" ? (
               <NavLink to="/admin" className="sidebar__button">
                 Főoldal
               </NavLink>
