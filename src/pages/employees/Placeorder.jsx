@@ -22,12 +22,6 @@ const Placeorder = () => {
     // dispatch(FILTER_BY_CATEGORY({ products, category: category }));
   };
 
-  const activeLink = ({ isActive }) => {
-    return isActive
-      ? "sidebar__button sidebar__button_active"
-      : "sidebar__button";
-  };
-
   return (
     <Layout>
       <div className="placeorder">
@@ -40,14 +34,14 @@ const Placeorder = () => {
           <div className="sidebar__buttons">
             {allCategories.map((item, index) => {
               return (
-                <button
+                <div
+                  className="sidebar__button"
                   key={index}
                   type="button"
-                  className={activeLink}
                   onClick={() => filterProducts(item)}
                 >
                   {item}
-                </button>
+                </div>
               );
             })}
             {/* <NavLink to="/" className={activeLink}>
