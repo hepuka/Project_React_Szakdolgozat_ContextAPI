@@ -9,6 +9,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { db, storage } from "../../firebase/config";
 import { useStateValue } from "../../ContextAPI/StateProvider";
+import { OnlyAdmin } from "../../ContextAPI/OnlyAdmin";
 
 const Products = () => {
   const [{ products }, dispatch] = useStateValue();
@@ -102,18 +103,19 @@ const Products = () => {
                       <p className="descinfo">Leírás: {item.desc}</p>
                     </div>
                   </div>
-
-                  <div className="products__buttons">
-                    <Link to={`/add-product/${item.id}`}>
-                      <button id="update">Módosít</button>
-                    </Link>
-                    <button
-                      id="delete"
-                      onClick={() => confirmDelete(item.id, item.imageURL)}
-                    >
-                      Töröl
-                    </button>
-                  </div>
+                  <OnlyAdmin>
+                    <div className="products__buttons">
+                      <Link to={`/add-product/${item.id}`}>
+                        <button id="update">Módosít</button>
+                      </Link>
+                      <button
+                        id="delete"
+                        onClick={() => confirmDelete(item.id, item.imageURL)}
+                      >
+                        Töröl
+                      </button>
+                    </div>
+                  </OnlyAdmin>
                 </div>
               );
             })

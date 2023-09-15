@@ -43,19 +43,23 @@ const Sidebar = () => {
             <NavLink to="/register/ADD" className={activeLink}>
               Új felhasználó regisztrálása
             </NavLink>
+          </OnlyAdmin>
 
-            <NavLink to="/products" className={activeLink}>
-              Termékek
-            </NavLink>
+          <NavLink to="/products" className={activeLink}>
+            Termékek
+          </NavLink>
 
+          <OnlyAdmin>
             <NavLink to="/add-product/ADD" className={activeLink}>
               Új termék hozzáadása
             </NavLink>
+          </OnlyAdmin>
 
-            <NavLink to="/orders" className={activeLink}>
-              Összes rendelés
-            </NavLink>
+          <NavLink to="/orders" className={activeLink}>
+            Összes rendelés
+          </NavLink>
 
+          <OnlyAdmin>
             <NavLink to="/business" className={activeLink}>
               Üzleti összesítő
             </NavLink>
@@ -68,14 +72,6 @@ const Sidebar = () => {
           <OnlyEmployee>
             <NavLink to="/tables" className={activeLink}>
               Asztalok
-            </NavLink>
-
-            <NavLink to="/products" className={activeLink}>
-              Termékek
-            </NavLink>
-
-            <NavLink to="/orders" className={activeLink}>
-              Összes rendelés
             </NavLink>
           </OnlyEmployee>
 
