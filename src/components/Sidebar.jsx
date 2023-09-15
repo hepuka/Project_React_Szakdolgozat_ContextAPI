@@ -65,6 +65,10 @@ const Sidebar = () => {
             <NavLink to="/tables" className={activeLink}>
               Asztalok
             </NavLink>
+
+            <NavLink to="/orders" className={activeLink}>
+              Összes rendelés
+            </NavLink>
           </OnlyEmployee>
 
           <NavLink to="/contact" className={activeLink}>
@@ -72,7 +76,7 @@ const Sidebar = () => {
           </NavLink>
 
           <div className="sidebar__buttons">
-            <NavLink to="/admin" className="sidebar__button">
+            <NavLink to="/main" className="sidebar__button">
               Főoldal
             </NavLink>
 

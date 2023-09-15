@@ -35,7 +35,7 @@ const Login = () => {
         });
 
         Notiflix.Notify.success("Sikeres bejelentkezés!");
-        navigate("/admin");
+        navigate("/main");
       })
       .catch((error) => {
         Notiflix.Notify.failure(error.message);

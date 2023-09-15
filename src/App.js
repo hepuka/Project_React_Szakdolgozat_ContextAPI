@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ShowOnLogin from "./ContextAPI/ShowOnLogin";
 import Login from "./pages/auth/Login";
 import Reset from "./pages/auth/Reset";
-import Employees from "./pages/employees/Employees";
 import { auth } from "./firebase/config";
 import { useStateValue } from "./ContextAPI/StateProvider";
 import { useEffect } from "react";
@@ -15,6 +14,7 @@ import Orders from "./pages/admin/Orders";
 import OrderDetails from "./pages/admin/OrderDetails";
 import Business from "./pages/admin/Business";
 import Contact from "./pages/admin/Contact";
+import Placeorder from "./pages/employees/Placeorder";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -42,18 +42,10 @@ function App() {
           <Route path="/" element={<Login />}></Route>
           <Route path="/reset" element={<Reset />}></Route>
           <Route
-            path="/admin"
+            path="/main"
             element={
               <ShowOnLogin>
                 <Admin />
-              </ShowOnLogin>
-            }
-          ></Route>
-          <Route
-            path="/employees"
-            element={
-              <ShowOnLogin>
-                <Employees />
               </ShowOnLogin>
             }
           ></Route>
@@ -118,6 +110,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <Contact />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/placeorder"
+            element={
+              <ShowOnLogin>
+                <Placeorder />
               </ShowOnLogin>
             }
           ></Route>
