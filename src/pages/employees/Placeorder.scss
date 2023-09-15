@@ -1,0 +1,57 @@
+@import "../../index.scss";
+
+.placeorder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+    margin-left: 40px;
+
+    .placeorder__card {
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+
+    .placeorder__tablenumber {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1/4;
+        grid-row: 1/3;
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+
+        }
+
+    }
+
+    .placeorder__tablebuttons {
+        grid-column: 1/4;
+        grid-row: 3/13;
+
+    }
+
+    .placeorder__tableproducts {
+        grid-column: 4/10;
+        grid-row: 1/13;
+
+    }
+
+    .placeorder__tableorders {
+        grid-column: 10/13;
+        grid-row: 1/9;
+
+    }
+
+    .placeorder__tablepayment {
+        grid-column: 10/13;
+        grid-row: 9/13;
+
+    }
+}

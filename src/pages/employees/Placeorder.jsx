@@ -7,8 +7,15 @@ const Placeorder = () => {
   const { id } = useParams();
   return (
     <Layout>
-      <h1>PLACE ORDER</h1>
-      <h1>{id}</h1>
+      <div className="placeorder">
+        <div className="placeorder__card placeorder__tablenumber">
+          <h1>{id}. asztal</h1>
+        </div>
+        <div className="placeorder__card placeorder__tablebuttons"> </div>
+        <div className="placeorder__card placeorder__tableproducts"> </div>
+        <div className="placeorder__card placeorder__tableorders"> </div>
+        <div className="placeorder__card placeorder__tablepayment"> </div>
+      </div>
     </Layout>
   );
 };
