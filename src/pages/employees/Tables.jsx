@@ -2,8 +2,15 @@ import React from "react";
 import "./Tables.scss";
 import Layout from "../../components/Layout";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Tables = () => {
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    navigate(`/placeorder/${id}`);
+  };
+
   return (
     <Layout>
       <div className="tables">
@@ -11,12 +18,10 @@ const Tables = () => {
           {Array(10)
             .fill()
             .map((_, i) => (
-              <Link to={`/placeorder/${i + 1}`}>
-                <div className="tables__card">
-                  {i + 1}. asztal
-                  <p>Szabad</p>
-                </div>
-              </Link>
+              <div className="tables__card" onClick={() => handleClick(i + 1)}>
+                {i + 1}. asztal
+                <p>Szabad</p>
+              </div>
             ))}
         </div>
       </div>
