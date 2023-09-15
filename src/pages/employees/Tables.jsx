@@ -24,6 +24,17 @@ const Tables = () => {
               </div>
             ))}
         </div>
+        <div className="tables__companyDetails">
+          <div className="tables__companylogo">
+            <img
+              src="https://freesvg.org/img/1667812423coffee-shop-logo-concept.png"
+              alt="coffe_logo"
+            />
+          </div>
+          <div className="tables__companydetails">
+            <h1>KunPao's Coffee Management</h1>
+          </div>
+        </div>
       </div>
     </Layout>
   );
