@@ -15,6 +15,7 @@ import OrderDetails from "./pages/admin/OrderDetails";
 import Business from "./pages/admin/Business";
 import Contact from "./pages/admin/Contact";
 import Placeorder from "./pages/employees/Placeorder";
+import Tables from "./pages/employees/Tables";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -118,6 +119,14 @@ function App() {
             element={
               <ShowOnLogin>
                 <Placeorder />
+              </ShowOnLogin>
+            }
+          ></Route>
+          <Route
+            path="/tables"
+            element={
+              <ShowOnLogin>
+                <Tables />
               </ShowOnLogin>
             }
           ></Route>

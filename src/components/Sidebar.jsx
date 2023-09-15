@@ -59,6 +59,10 @@ const Sidebar = () => {
             <NavLink to="/business" className={activeLink}>
               Üzleti összesítő
             </NavLink>
+
+            <NavLink to="/contact" className={activeLink}>
+              Hibabejelentés
+            </NavLink>
           </OnlyAdmin>
 
           <OnlyEmployee>
@@ -70,10 +74,6 @@ const Sidebar = () => {
               Összes rendelés
             </NavLink>
           </OnlyEmployee>
-
-          <NavLink to="/contact" className={activeLink}>
-            Hibabejelentés
-          </NavLink>
 
           <div className="sidebar__buttons">
             <NavLink to="/main" className="sidebar__button">
