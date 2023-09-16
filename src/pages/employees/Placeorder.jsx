@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import { useParams } from "react-router-dom";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import useFetchCollection from "../../customHooks/useFetchCollection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import Notiflix from "notiflix";
@@ -16,7 +16,11 @@ const Placeorder = () => {
   const [count, setCount] = useState(1);
   const tableOrders = useFetchCollection(`tableorders_${id}`);
 
-  console.log(tableOrders);
+  let summ = 0;
+  tableOrders.map((item) => {
+    summ += item.sum;
+  });
+
   const allCategories = [
     "Összes",
     ...new Set(products.map((item) => item.category)),
@@ -141,17 +145,19 @@ const Placeorder = () => {
           {tableOrders.map((item) => {
             return (
               <>
-                <h1>{item.name}</h1>
-                <h1>{item.price}</h1>
-                <h1>{item.category}</h1>
-                <h1>{item.packaging}</h1>
-                <h1>{item.amount}</h1>
-                <h1>{item.sum}</h1>
+                <p>{item.name}</p>
+                <p>{item.price}</p>
+                <p>{item.category}</p>
+                <p>{item.packaging}</p>
+                <p>{item.amount}</p>
+                <p>{item.sum}</p>
               </>
             );
           })}
         </div>
-        <div className="placeorder__card placeorder__tablepayment"> </div>
+        <div className="placeorder__card placeorder__tablepayment">
+          Végösszeg: {summ}
+        </div>
       </div>
     </Layout>
   );
