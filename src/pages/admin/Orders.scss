@@ -41,6 +41,10 @@
             font-size: 1.5rem;
             cursor: pointer;
 
+            &:active {
+                transform: scale(0.95);
+            }
+
             .orders__rows {
                 display: flex;
                 width: 100%;

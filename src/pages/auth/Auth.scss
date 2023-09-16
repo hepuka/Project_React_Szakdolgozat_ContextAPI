@@ -60,6 +60,10 @@
             border-color: $borderColor;
             cursor: pointer;
             border-radius: 4px;
+
+            &:active {
+                transform: scale(0.95);
+            }
         }
 
         .login__resetSection {
@@ -73,6 +77,10 @@
                 border-color: $borderColor;
                 cursor: pointer;
                 border-radius: 4px;
+
+                &:active {
+                    transform: scale(0.95);
+                }
 
             }
         }

@@ -18,7 +18,11 @@ const Tables = () => {
           {Array(15)
             .fill()
             .map((_, i) => (
-              <div className="tables__card" onClick={() => handleClick(i + 1)}>
+              <div
+                key={i}
+                className="tables__card"
+                onClick={() => handleClick(i + 1)}
+              >
                 {i + 1}. asztal
                 <p>Szabad</p>
               </div>

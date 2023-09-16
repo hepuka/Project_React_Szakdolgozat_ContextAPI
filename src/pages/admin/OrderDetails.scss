@@ -101,6 +101,10 @@
                 cursor: pointer;
                 border-radius: 4px;
                 text-align: center;
+
+                &:active {
+                    transform: scale(0.95);
+                }
             }
 
 

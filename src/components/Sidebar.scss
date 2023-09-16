@@ -59,6 +59,10 @@
         background-color: $light;
     }
 
+    &:active {
+        transform: scale(0.95);
+    }
+
 }
 
 .sidebar__button_active {

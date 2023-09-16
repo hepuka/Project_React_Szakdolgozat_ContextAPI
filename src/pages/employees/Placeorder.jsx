@@ -23,6 +23,8 @@ const Placeorder = () => {
     });
   };
 
+  const selectedProduct = () => {};
+
   return (
     <Layout>
       <div className="placeorder">
@@ -49,12 +51,12 @@ const Placeorder = () => {
         <div className="placeorder__card placeorder__tableproducts">
           {tempProducts.map((item) => {
             return (
-              <>
+              <div onClick={selectedProduct}>
                 <h2>Name: {item.name}</h2>
                 <h2>Category: {item.category}</h2>
                 <h2>Packaging: {item.packaging}</h2>
                 <h2>Price: {item.price}</h2>
-              </>
+              </div>
             );
           })}
         </div>
