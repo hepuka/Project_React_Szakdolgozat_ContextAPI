@@ -3,7 +3,6 @@ export const initialState = {
   userName: null,
   userRole: null,
   userPin: null,
-  currUser: "",
   users: [],
   product: [],
   products: [],
@@ -35,7 +34,6 @@ const reducer = (state, action) => {
         return {
           ...state,
           currUserData: action.currUserData,
-          currUser: action.currUserData.name,
         };
       }
 
