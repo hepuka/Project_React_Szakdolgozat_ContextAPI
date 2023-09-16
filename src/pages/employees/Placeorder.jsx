@@ -11,8 +11,6 @@ const Placeorder = () => {
     useStateValue();
   const products = useFetchCollection("kunpaosproducts");
 
-  console.log(selectedproduct);
-
   const allCategories = [
     "Összes",
     ...new Set(products.map((item) => item.category)),
@@ -59,11 +57,12 @@ const Placeorder = () => {
         <div className="placeorder__card placeorder__tableproducts">
           {tempProducts.map((item) => {
             return (
-              <div key={item.id} onClick={() => selectedProduct(item)}>
-                <h2>Name: {item.name}</h2>
-                <h2>Category: {item.category}</h2>
-                <h2>Packaging: {item.packaging}</h2>
-                <h2>Price: {item.price}</h2>
+              <div
+                className="placeorder__tableproductsCard"
+                key={item.id}
+                onClick={() => selectedProduct(item)}
+              >
+                <h2>{item.name}</h2>
               </div>
             );
           })}

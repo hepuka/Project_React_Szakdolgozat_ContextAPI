@@ -46,6 +46,36 @@
     .placeorder__tableproducts {
         grid-column: 4/10;
         grid-row: 1/10;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        column-gap: 20px;
+        padding: 20px;
+
+
+        .placeorder__tableproductsCard {
+            width: 120px;
+            height: 120px;
+            border: 1px solid ligh;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            h2 {
+                text-align: center;
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+
+
+
 
     }
 
