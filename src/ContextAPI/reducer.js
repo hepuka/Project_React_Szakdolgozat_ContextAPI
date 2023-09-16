@@ -10,6 +10,7 @@ export const initialState = {
   tempProducts: [],
   currUserData: null,
   category: null,
+  selectedproduct: "",
 };
 
 const reducer = (state, action) => {
@@ -69,6 +70,14 @@ const reducer = (state, action) => {
         product: action.product,
         category: action.category,
       };
+
+    case "SET_SELECTEDPRODUCT":
+      if (action.selectedproduct) {
+        return {
+          ...state,
+          selectedproduct: action.selectedproduct,
+        };
+      }
 
     default:
       return state;

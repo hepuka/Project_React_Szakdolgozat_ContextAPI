@@ -7,8 +7,11 @@ import useFetchCollection from "../../customHooks/useFetchCollection";
 
 const Placeorder = () => {
   const { id } = useParams();
-  const [{ userName, tempProducts }, dispatch] = useStateValue();
+  const [{ userName, tempProducts, selectedproduct }, dispatch] =
+    useStateValue();
   const products = useFetchCollection("kunpaosproducts");
+
+  console.log(selectedproduct);
 
   const allCategories = [
     "Összes",
@@ -23,11 +26,12 @@ const Placeorder = () => {
     });
   };
 
-  useEffect(() => {
-    filterProducts();
-  }, []);
-
-  const selectedProduct = () => {};
+  const selectedProduct = (item) => {
+    dispatch({
+      type: "SET_SELECTEDPRODUCT",
+      selectedproduct: item,
+    });
+  };
 
   return (
     <Layout>
@@ -55,7 +59,7 @@ const Placeorder = () => {
         <div className="placeorder__card placeorder__tableproducts">
           {tempProducts.map((item) => {
             return (
-              <div onClick={selectedProduct}>
+              <div key={item.id} onClick={() => selectedProduct(item)}>
                 <h2>Name: {item.name}</h2>
                 <h2>Category: {item.category}</h2>
                 <h2>Packaging: {item.packaging}</h2>
@@ -65,7 +69,14 @@ const Placeorder = () => {
           })}
         </div>
         <div className="placeorder__card placeorder__tableproductdetails">
-          {" "}
+          {selectedproduct && (
+            <div>
+              <h2>Name: {selectedproduct.name}</h2>
+              <h2>Category: {selectedproduct.category}</h2>
+              <h2>Packaging: {selectedproduct.packaging}</h2>
+              <h2>Price: {selectedproduct.price}</h2>
+            </div>
+          )}
         </div>
         <div className="placeorder__card placeorder__tableorders"> </div>
         <div className="placeorder__card placeorder__tablepayment"> </div>
