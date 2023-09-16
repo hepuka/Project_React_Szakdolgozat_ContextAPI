@@ -64,6 +64,9 @@ const Placeorder = () => {
             );
           })}
         </div>
+        <div className="placeorder__card placeorder__tableproductdetails">
+          {" "}
+        </div>
         <div className="placeorder__card placeorder__tableorders"> </div>
         <div className="placeorder__card placeorder__tablepayment"> </div>
       </div>

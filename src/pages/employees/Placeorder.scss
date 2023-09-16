@@ -45,8 +45,13 @@
 
     .placeorder__tableproducts {
         grid-column: 4/10;
-        grid-row: 1/13;
+        grid-row: 1/10;
 
+    }
+
+    .placeorder__tableproductdetails {
+        grid-column: 4/10;
+        grid-row: 10/13;
     }
 
     .placeorder__tableorders {
