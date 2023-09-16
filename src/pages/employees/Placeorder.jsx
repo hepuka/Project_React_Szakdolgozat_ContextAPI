@@ -23,6 +23,10 @@ const Placeorder = () => {
     });
   };
 
+  useEffect(() => {
+    filterProducts();
+  }, []);
+
   const selectedProduct = () => {};
 
   return (
