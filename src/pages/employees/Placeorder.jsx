@@ -55,17 +55,19 @@ const Placeorder = () => {
           </div>
         </div>
         <div className="placeorder__card placeorder__tableproducts">
-          {tempProducts.map((item) => {
-            return (
-              <div
-                className="placeorder__tableproductsCard"
-                key={item.id}
-                onClick={() => selectedProduct(item)}
-              >
-                <h2>{item.name}</h2>
-              </div>
-            );
-          })}
+          <div className="placeorder__tableproductsCardList">
+            {tempProducts.map((item) => {
+              return (
+                <div
+                  className="placeorder__tableproductsCard"
+                  key={item.id}
+                  onClick={() => selectedProduct(item)}
+                >
+                  <h2>{item.name}</h2>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div className="placeorder__card placeorder__tableproductdetails">
           {selectedproduct && (
