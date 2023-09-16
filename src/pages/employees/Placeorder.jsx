@@ -14,7 +14,9 @@ const Placeorder = () => {
     useStateValue();
   const products = useFetchCollection("kunpaosproducts");
   const [count, setCount] = useState(1);
+  const tableOrders = useFetchCollection(`tableorders_${id}`);
 
+  console.log(tableOrders);
   const allCategories = [
     "Összes",
     ...new Set(products.map((item) => item.category)),
@@ -135,7 +137,20 @@ const Placeorder = () => {
             )}
           </div>
         </div>
-        <div className="placeorder__card placeorder__tableorders"> </div>
+        <div className="placeorder__card placeorder__tableorders">
+          {tableOrders.map((item) => {
+            return (
+              <>
+                <h1>{item.name}</h1>
+                <h1>{item.price}</h1>
+                <h1>{item.category}</h1>
+                <h1>{item.packaging}</h1>
+                <h1>{item.amount}</h1>
+                <h1>{item.sum}</h1>
+              </>
+            );
+          })}
+        </div>
         <div className="placeorder__card placeorder__tablepayment"> </div>
       </div>
     </Layout>
