@@ -90,6 +90,7 @@ const Placeorder = () => {
     orderTime: time,
     orderAmount: summ * 1.05,
     orderStatus: "Fizetve",
+    tablenumber: id,
     cartItems: tableOrders,
     createdAt: Timestamp.now().toDate(),
   };
@@ -99,8 +100,6 @@ const Placeorder = () => {
       addDoc(collection(db, "kunpaosorders"), orderConfig);
 
       const docRef = query(collection(db, `tableorders_${id}`));
-
-      // //Then download all those documents using getDocs
       const toDelete = await getDocs(docRef);
 
       toDelete.forEach((item) => {

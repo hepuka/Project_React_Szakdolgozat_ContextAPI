@@ -23,13 +23,12 @@
         width: 100%;
         padding: 0 30px;
 
-
         .orders__card {
             border: 1px solid $borderColor;
             border-radius: 10px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             width: 400px;
-            height: 170px;
+            height: fit-content;
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
@@ -48,8 +47,10 @@
             .orders__rows {
                 display: flex;
                 width: 100%;
+                height: fit-content;
                 justify-content: space-between;
-                margin-top: 6px;
+                margin: 6px 0;
+
 
                 p {
                     font-weight: 500;

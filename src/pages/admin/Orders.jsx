@@ -10,6 +10,7 @@ const Orders = () => {
   const data = useFetchCollection("kunpaosorders");
   const navigate = useNavigate();
 
+  console.log(data);
   useEffect(() => {
     dispatch({
       type: "STORE_ORDERS",
@@ -53,7 +54,11 @@ const Orders = () => {
                   </div>
                   <div className="orders__rows">
                     <p>Felszolgáló neve: </p>
-                    <span>{item.userEmail}</span>
+                    <span>{item.username}</span>
+                  </div>
+                  <div className="orders__rows">
+                    <p>Asztal száma: </p>
+                    <span>{item.tablenumber}</span>
                   </div>
                   <div className="orders__rows">
                     <p>Rendelés állapota: </p>
