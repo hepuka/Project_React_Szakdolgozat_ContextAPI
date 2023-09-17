@@ -1,6 +1,6 @@
 import "./Placeorder.scss";
 import Layout from "../../components/Layout";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import useFetchCollection from "../../customHooks/useFetchCollection";
 import { useEffect, useState } from "react";
@@ -179,7 +179,22 @@ const Placeorder = () => {
           </div>
         </div>
         <div className="placeorder__card placeorder__tablepayment">
-          Végösszeg: {summ}
+          <div className="placeorder__tablepaymentdetails">
+            <h2>
+              Összeg: <span>{summ} Ft</span>
+            </h2>
+            <h2>
+              Adó: <span>5%</span>
+            </h2>
+            <h2>
+              Végösszeg: <span>{summ * 1.05} Ft</span>
+            </h2>
+          </div>
+          <div className="placeorder__tablepayment__button">
+            <Link to="/main">
+              <button>Fizetés</button>
+            </Link>
+          </div>
         </div>
       </div>
     </Layout>

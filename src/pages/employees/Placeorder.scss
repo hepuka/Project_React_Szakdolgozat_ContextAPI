@@ -153,7 +153,7 @@
                     border-radius: 4px;
                     text-align: center;
                     width: 130px;
-                    padding: 10px 15px;
+                    padding: 10px 10px;
                     margin-top: 10px;
 
 
@@ -249,6 +249,44 @@
     .placeorder__tablepayment {
         grid-column: 10/13;
         grid-row: 9/13;
+
+        .placeorder__tablepaymentdetails {
+            padding: 20px;
+            width: 100%;
+
+            h2 {
+
+                margin-bottom: 10px;
+
+                span {
+                    float: right;
+                }
+            }
+        }
+
+        .placeorder__tablepayment__button {
+            text-align: center;
+
+            button {
+                background: $buttonBackground;
+                border: 1px solid;
+                border-color: $borderColor;
+                cursor: pointer;
+                border-radius: 4px;
+                text-align: center;
+                width: 130px;
+                padding: 10px 10px;
+                margin-top: 10px;
+
+
+
+                &:active {
+                    transform: scale(0.95);
+
+                }
+
+            }
+        }
 
     }
 }
