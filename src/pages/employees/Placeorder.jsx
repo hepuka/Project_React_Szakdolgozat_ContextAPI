@@ -102,10 +102,11 @@ const Placeorder = () => {
   };
 
   const saveOrder = async (e) => {
+    e.preventDefault();
+
     if (pin !== userPin) {
       Notiflix.Notify.failure("Hibás pin kód");
     } else {
-      e.preventDefault();
       addDoc(collection(db, "kunpaosorders"), orderConfig);
 
       const docRef = query(collection(db, `tableorders_${id}`));
