@@ -142,18 +142,41 @@ const Placeorder = () => {
           </div>
         </div>
         <div className="placeorder__card placeorder__tableorders">
-          {tableOrders.map((item) => {
-            return (
-              <>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
-                <p>{item.category}</p>
-                <p>{item.packaging}</p>
-                <p>{item.amount}</p>
-                <p>{item.sum}</p>
-              </>
-            );
-          })}
+          <div className="placeorder__tableordersdetails">
+            <div className="placeorder__tableordersdetailsimg">
+              <img
+                src="https://freesvg.org/img/1667812423coffee-shop-logo-concept.png"
+                alt="coffe_logo"
+              />
+            </div>
+            <div className="placeorder__tableordersdetailstitle">
+              <h2>KunPao's Coffee Management</h2>
+            </div>
+            <div className="placeorder__tableordersdetailstable">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Megnevezés</th>
+                    <th>Egységár (Ft)</th>
+                    <th>Menny. (db)</th>
+                    <th>Összeg (Ft)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableOrders.map((item) => {
+                    return (
+                      <tr key={item.name}>
+                        <td>{item.name}</td>
+                        <td>{item.price}</td>
+                        <td>{item.amount}</td>
+                        <td>{item.sum}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <div className="placeorder__card placeorder__tablepayment">
           Végösszeg: {summ}

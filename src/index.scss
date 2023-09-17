@@ -30,6 +30,7 @@ body {
 
 }
 
+
 h1 {
     color: $font-color;
 }
@@ -43,7 +44,8 @@ code {
     display: none;
 }
 
-.sidebar__containerb {
+.sidebar__containerb,
+.placeorder__tableordersdetails {
 
     -ms-overflow-style: none;
     scrollbar-width: none;

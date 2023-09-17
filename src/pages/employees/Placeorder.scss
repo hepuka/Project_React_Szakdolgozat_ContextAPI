@@ -170,14 +170,79 @@
 
         }
 
-
-
-
     }
 
     .placeorder__tableorders {
         grid-column: 10/13;
         grid-row: 1/9;
+
+        .placeorder__tableordersdetails {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: auto;
+            max-height: 500px;
+
+            &::-webkit-scrollbar {
+                display: none;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+
+            .placeorder__tableordersdetailsimg {
+                width: 100px;
+                height: 100px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+
+                }
+
+            }
+
+            .placeorder__tableordersdetailstitle {
+                margin-bottom: 20px;
+            }
+
+            .placeorder__tableordersdetailstable {
+                width: 100%;
+
+
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    font-size: 1rem;
+
+                    thead {
+                        border-bottom: 2px dotted $font-color;
+                    }
+
+                    th,
+                    td {
+                        vertical-align: top;
+                        text-align: center;
+                        padding: 8px;
+                        color: $font-color;
+
+                    }
+
+                    p {
+                        padding-bottom: 10px;
+                    }
+
+
+
+                }
+            }
+
+        }
+
+
+
 
     }
 
