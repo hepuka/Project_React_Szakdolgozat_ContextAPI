@@ -64,6 +64,8 @@ const Placeorder = () => {
         createdAt: Timestamp.now().toDate(),
       });
 
+      setCount(1);
+
       Notiflix.Notify.success("Rendelés hozzáadva!");
     } catch (error) {
       Notiflix.Notify.failure(error.message);
@@ -116,7 +118,7 @@ const Placeorder = () => {
                   <h2>Név: {selectedproduct.name}</h2>
                   <h2>Kategória: {selectedproduct.category}</h2>
                   <h2>Kiszerelés: {selectedproduct.packaging}</h2>
-                  <h2>Egységár: {selectedproduct.price}</h2>
+                  <h2>Egységár: {selectedproduct.price} Ft</h2>
                 </div>
                 <div className="placeorder__tableproductdetailssettings">
                   <div className="placeorder__amountsettings">
