@@ -3,18 +3,29 @@ import Layout from "../../components/Layout";
 import { Link, useParams } from "react-router-dom";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import useFetchCollection from "../../customHooks/useFetchCollection";
-import { useEffect, useState } from "react";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { useState } from "react";
+import {
+  addDoc,
+  collection,
+  Timestamp,
+  deleteDoc,
+  doc,
+  query,
+  getDocs,
+} from "firebase/firestore";
 import { db } from "../../firebase/config";
 import Notiflix from "notiflix";
 
 const Placeorder = () => {
   const { id } = useParams();
-  const [{ userName, tempProducts, selectedproduct }, dispatch] =
+  const [{ user, userName, tempProducts, selectedproduct }, dispatch] =
     useStateValue();
   const products = useFetchCollection("kunpaosproducts");
   const [count, setCount] = useState(1);
-  const tableOrders = useFetchCollection(`tableorders_${id}`);
+  let tableOrders = useFetchCollection(`tableorders_${id}`);
+  const today = new Date();
+  const date = today.toDateString();
+  const time = today.toLocaleTimeString();
 
   let summ = 0;
   tableOrders.map((item) => {
@@ -67,6 +78,37 @@ const Placeorder = () => {
       setCount(1);
 
       Notiflix.Notify.success("Rendelés hozzáadva!");
+    } catch (error) {
+      Notiflix.Notify.failure(error.message);
+    }
+  };
+
+  const orderConfig = {
+    user: user.email,
+    username: userName,
+    orderDate: date,
+    orderTime: time,
+    orderAmount: summ * 1.05,
+    orderStatus: "Fizetve",
+    cartItems: tableOrders,
+    createdAt: Timestamp.now().toDate(),
+  };
+
+  const saveOrder = async () => {
+    try {
+      addDoc(collection(db, "kunpaosorders"), orderConfig);
+
+      const docRef = query(collection(db, `tableorders_${id}`));
+
+      // //Then download all those documents using getDocs
+      const toDelete = await getDocs(docRef);
+
+      toDelete.forEach((item) => {
+        const ID = item.id;
+        deleteDoc(doc(db, `tableorders_${id}`, ID));
+      });
+
+      Notiflix.Notify.success("Megrendelés leadva");
     } catch (error) {
       Notiflix.Notify.failure(error.message);
     }
@@ -167,7 +209,7 @@ const Placeorder = () => {
                 <tbody>
                   {tableOrders.map((item) => {
                     return (
-                      <tr key={item.name}>
+                      <tr key={item.createdAt}>
                         <td>{item.name}</td>
                         <td>{item.price}</td>
                         <td>{item.amount}</td>
@@ -192,7 +234,7 @@ const Placeorder = () => {
               Végösszeg: <span>{summ * 1.05} Ft</span>
             </h2>
           </div>
-          <div className="placeorder__tablepayment__button">
+          <div className="placeorder__tablepayment__button" onClick={saveOrder}>
             <Link to="/main">
               <button>Fizetés</button>
             </Link>
