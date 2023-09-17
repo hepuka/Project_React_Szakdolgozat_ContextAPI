@@ -1,6 +1,6 @@
 import "./Placeorder.scss";
 import Layout from "../../components/Layout";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import useFetchCollection from "../../customHooks/useFetchCollection";
 import { useState } from "react";
@@ -18,14 +18,20 @@ import Notiflix from "notiflix";
 
 const Placeorder = () => {
   const { id } = useParams();
-  const [{ user, userName, tempProducts, selectedproduct }, dispatch] =
-    useStateValue();
+  const [
+    { user, userName, tempProducts, selectedproduct, userPin, currUserData },
+    dispatch,
+  ] = useStateValue();
   const products = useFetchCollection("kunpaosproducts");
   const [count, setCount] = useState(1);
   let tableOrders = useFetchCollection(`tableorders_${id}`);
   const today = new Date();
   const date = today.toDateString();
   const time = today.toLocaleTimeString();
+  const data = useFetchCollection("users");
+  const currentUSer = data.find((item) => item.email === user.email);
+  const [pin, setPin] = useState(0);
+  const navigate = useNavigate();
 
   let summ = 0;
   tableOrders.map((item) => {
@@ -95,8 +101,11 @@ const Placeorder = () => {
     createdAt: Timestamp.now().toDate(),
   };
 
-  const saveOrder = async () => {
-    try {
+  const saveOrder = async (e) => {
+    if (pin !== userPin) {
+      Notiflix.Notify.failure("Hibás pin kód");
+    } else {
+      e.preventDefault();
       addDoc(collection(db, "kunpaosorders"), orderConfig);
 
       const docRef = query(collection(db, `tableorders_${id}`));
@@ -108,8 +117,7 @@ const Placeorder = () => {
       });
 
       Notiflix.Notify.success("Megrendelés leadva");
-    } catch (error) {
-      Notiflix.Notify.failure(error.message);
+      navigate("/main");
     }
   };
 
@@ -233,10 +241,15 @@ const Placeorder = () => {
               Végösszeg: <span>{summ * 1.05} Ft</span>
             </h2>
           </div>
-          <div className="placeorder__tablepayment__button" onClick={saveOrder}>
-            <Link to="/main">
-              <button>Fizetés</button>
-            </Link>
+          <div className="placeorder__tablepayment__button">
+            <form onSubmit={saveOrder}>
+              <input
+                type="text"
+                required
+                onChange={(e) => setPin(e.target.value)}
+              />
+              <button type="submit">Fizetés</button>
+            </form>
           </div>
         </div>
       </div>
