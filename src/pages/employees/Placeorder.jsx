@@ -246,6 +246,7 @@ const Placeorder = () => {
             <form onSubmit={saveOrder}>
               <input
                 type="text"
+                placeholder="Add meg a PIN kódot"
                 required
                 onChange={(e) => setPin(e.target.value)}
               />

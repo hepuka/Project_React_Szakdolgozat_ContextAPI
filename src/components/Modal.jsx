@@ -6,7 +6,11 @@ const Modals = ({ number, handleClick, setModalInput, setModalIsOpen }) => {
     <div className="modal">
       <h2>Add meg a személyes PIN kódot!</h2>
       <div>
-        <input type="text" onChange={(e) => setModalInput(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Add meg a PIN kódot"
+          onChange={(e) => setModalInput(e.target.value)}
+        />
       </div>
       <div>
         <button id="signin" onClick={() => handleClick(number)}>

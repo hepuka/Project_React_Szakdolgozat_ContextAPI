@@ -267,25 +267,44 @@
         .placeorder__tablepayment__button {
             text-align: center;
 
-            button {
-                background: $buttonBackground;
-                border: 1px solid;
-                border-color: $borderColor;
-                cursor: pointer;
-                border-radius: 4px;
-                text-align: center;
-                width: 130px;
-                padding: 10px 10px;
-                margin-top: 10px;
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
+                input {
+                    background-color: transparent;
+                    padding-left: 5px;
+                    height: 30px;
+                    border: 1px solid;
 
+                    &:active {
+                        border: none;
 
-                &:active {
-                    transform: scale(0.95);
-
+                    }
                 }
 
+                button {
+                    background: $buttonBackground;
+                    border: 1px solid;
+                    border-color: $borderColor;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    text-align: center;
+                    width: 175px;
+                    padding: 10px 10px;
+                    margin-top: 10px;
+
+                    &:active {
+                        transform: scale(0.95);
+
+                    }
+
+                }
             }
+
+
         }
 
     }
