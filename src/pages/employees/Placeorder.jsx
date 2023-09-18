@@ -129,6 +129,30 @@ const Placeorder = () => {
     }
   };
 
+  const confirmDelete = (productid) => {
+    Notiflix.Confirm.show(
+      "Rendelés törlése!",
+      "Valóban törölni akarja a rendelést?",
+      "Törlés",
+      "Mégse",
+
+      function okCb() {
+        deleteOrder(productid);
+      },
+
+      function cancelCb() {
+        console.log("Törlés elutasítva!");
+      },
+      {
+        width: "320px",
+        borderRadius: "8px",
+        titleColor: "red",
+        okButtonBackground: "red",
+        cssAnimationStyle: "zoom",
+      }
+    );
+  };
+
   const deleteOrder = async (productid) => {
     const q = query(
       collection(db, `tableorders_${id}`),
@@ -136,8 +160,8 @@ const Placeorder = () => {
     );
 
     const querySnapshot = await getDocs(q);
-
     const deletedProduct = querySnapshot.docs[0]._key.path.segments[6];
+
     const docRef = doc(db, `tableorders_${id}`, deletedProduct);
 
     deleteDoc(docRef).then(() => {
@@ -243,7 +267,7 @@ const Placeorder = () => {
                     return (
                       <tr
                         key={item.createdAt}
-                        onClick={() => deleteOrder(item.id)}
+                        onClick={() => confirmDelete(item.id)}
                       >
                         <td>{item.name}</td>
                         <td>{item.price}</td>
