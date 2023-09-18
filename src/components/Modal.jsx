@@ -1,48 +1,22 @@
 import React from "react";
-import Modal from "react-modal";
+import "./Modal.scss";
 
-const customStyles = {
-  overlay: {
-    backgroundColor: "transparent",
-  },
-
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "50%",
-    transform: "translate(-50%, -50%)",
-    height: "200px",
-    width: "400px",
-    textAlign: "center",
-    borderRadius: "20px",
-  },
-};
-
-const Modals = ({
-  number,
-  setModalIsOpen,
-  modalIsOpen,
-  handleClick,
-  setModalInput,
-}) => {
+const Modals = ({ number, handleClick, setModalInput, setModalIsOpen }) => {
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={() => setModalIsOpen(false)}
-      style={customStyles}
-    >
-      <div className="tables__modalContent">
-        <h2>Add meg a személyes PIN kódot!</h2>
-        <div>
-          <input type="text" onChange={(e) => setModalInput(e.target.value)} />
-        </div>
-        <div>
-          <button onClick={() => handleClick(number)}>Tovább</button>
-        </div>
+    <div className="modal">
+      <h2>Add meg a személyes PIN kódot!</h2>
+      <div>
+        <input type="text" onChange={(e) => setModalInput(e.target.value)} />
       </div>
-    </Modal>
+      <div>
+        <button id="signin" onClick={() => handleClick(number)}>
+          Tovább
+        </button>
+        <button id="cancel" onClick={() => setModalIsOpen(false)}>
+          Mégse
+        </button>
+      </div>
+    </div>
   );
 };
 

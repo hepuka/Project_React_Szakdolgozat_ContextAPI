@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import { useNavigate } from "react-router-dom";
 import { useStateValue } from "../../ContextAPI/StateProvider";
 import Modals from "../../components/Modal";
+import { createPortal } from "react-dom";
 
 const Tables = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -40,13 +41,16 @@ const Tables = () => {
                 </div>
               </>
             ))}
-          <Modals
-            number={tablenumber}
-            modalIsOpen={modalIsOpen}
-            setModalIsOpen={setModalIsOpen}
-            handleClick={handleClick}
-            setModalInput={setModalInput}
-          />
+          {modalIsOpen &&
+            createPortal(
+              <Modals
+                number={tablenumber}
+                handleClick={handleClick}
+                setModalIsOpen={setModalIsOpen}
+                setModalInput={setModalInput}
+              />,
+              document.body
+            )}
         </div>
       </div>
     </Layout>
