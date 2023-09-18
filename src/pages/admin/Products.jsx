@@ -77,7 +77,7 @@ const Products = () => {
         </div>
         <div className="products__cardlist">
           {filteredProducts.length === 0 ? (
-            <p>No product found.</p>
+            <h2>Nem található termék.</h2>
           ) : (
             filteredProducts.map((item) => {
               return (
