@@ -11,6 +11,8 @@ export const initialState = {
   currUserData: null,
   category: null,
   selectedproduct: "",
+  number: 0,
+  status: "Szabad",
 };
 
 const reducer = (state, action) => {
@@ -37,6 +39,13 @@ const reducer = (state, action) => {
           currUserData: action.currUserData,
         };
       }
+
+    case "SET_TABLE":
+      return {
+        ...state,
+        number: action.number,
+        status: action.status,
+      };
 
     case "STORE_USERS":
       return {

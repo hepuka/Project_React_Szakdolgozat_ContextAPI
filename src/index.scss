@@ -39,9 +39,11 @@ body {
 
 
 
-h1 {
+h1,
+h2 {
     color: $font-color;
 }
+
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

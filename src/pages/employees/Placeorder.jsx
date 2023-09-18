@@ -19,6 +19,7 @@ import Notiflix from "notiflix";
 
 const Placeorder = () => {
   const { id } = useParams();
+
   const [
     { user, userName, tempProducts, selectedproduct, userPin, currUserData },
     dispatch,
