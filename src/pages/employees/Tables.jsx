@@ -10,17 +10,12 @@ const Tables = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const [modalInput, setModalInput] = useState(0);
-  const [{ status, userPin }, dispatch] = useStateValue();
+  const [{ userPin }, dispatch] = useStateValue();
   const [tablenumber, setTableNumber] = useState(0);
+  const [tableStatus, setTableStatus] = useState("Szabad");
 
-  const handleClick = (id) => {
+  const handleClick = async (id) => {
     if (modalInput === userPin) {
-      dispatch({
-        type: "SET_TABLE",
-        number: id,
-        status: "Foglalt",
-      });
-
       navigate(`/placeorder/${id}`);
       setModalIsOpen(false);
     }
@@ -43,7 +38,7 @@ const Tables = () => {
                   }}
                 >
                   {i + 1}. asztal
-                  <p>{status}</p>
+                  <p>{tableStatus}</p>
                 </div>
               </>
             ))}
