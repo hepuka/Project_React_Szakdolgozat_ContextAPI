@@ -16,6 +16,8 @@
         column-gap: 30px;
         row-gap: 60px;
 
+
+
         .tables__card {
 
             border: 1px solid $borderColor;
@@ -37,6 +39,8 @@
                 transform: scale(0.95);
             }
 
+
+
             p {
                 font-size: 2rem;
                 padding-top: 10px;
@@ -44,7 +48,28 @@
                 font-weight: 700;
             }
         }
+
+
     }
 
 
+}
+
+.tables__modalContent {
+
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        height: 30px;
+        width: 80px;
+    }
 }
