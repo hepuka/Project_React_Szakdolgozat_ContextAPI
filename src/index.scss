@@ -27,8 +27,16 @@ html {
 body {
     min-height: 100vh;
     background: linear-gradient(to top, white, $dark);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 
 }
+
 
 
 h1 {
