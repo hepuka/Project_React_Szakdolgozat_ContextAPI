@@ -124,7 +124,7 @@ const Placeorder = () => {
         deleteDoc(doc(db, `tableorders_${id}`, ID));
       });
 
-      Notiflix.Notify.success("Rendelés leadva");
+      Notiflix.Notify.success("Rendelés fizetve!");
       navigate("/main");
     }
   };
