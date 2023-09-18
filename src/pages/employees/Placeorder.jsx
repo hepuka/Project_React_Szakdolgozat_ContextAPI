@@ -12,6 +12,7 @@ import {
   doc,
   query,
   getDocs,
+  where,
 } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import Notiflix from "notiflix";
@@ -25,6 +26,7 @@ const Placeorder = () => {
   const products = useFetchCollection("kunpaosproducts");
   const [count, setCount] = useState(1);
   let tableOrders = useFetchCollection(`tableorders_${id}`);
+
   const today = new Date();
   const date = today.toDateString();
   const time = today.toLocaleTimeString();
@@ -33,10 +35,14 @@ const Placeorder = () => {
   const [pin, setPin] = useState(0);
   const navigate = useNavigate();
 
-  let summ = 0;
-  tableOrders.map((item) => {
-    summ += item.sum;
-  });
+  const getTotal = () => {
+    let summ = 0;
+    tableOrders.map((item) => {
+      summ += item.sum;
+    });
+
+    return summ;
+  };
 
   const allCategories = [
     "Összes",
@@ -71,6 +77,7 @@ const Placeorder = () => {
   const addToOrder = () => {
     try {
       addDoc(collection(db, `tableorders_${id}`), {
+        id: new Date().getTime(),
         name: selectedproduct.name,
         price: selectedproduct.price,
         category: selectedproduct.category,
@@ -94,7 +101,7 @@ const Placeorder = () => {
     username: userName,
     orderDate: date,
     orderTime: time,
-    orderAmount: summ * 1.05,
+    orderAmount: getTotal(),
     orderStatus: "Fizetve",
     tablenumber: id,
     cartItems: tableOrders,
@@ -117,9 +124,26 @@ const Placeorder = () => {
         deleteDoc(doc(db, `tableorders_${id}`, ID));
       });
 
-      Notiflix.Notify.success("Megrendelés leadva");
+      Notiflix.Notify.success("Rendelés leadva");
       navigate("/main");
     }
+  };
+
+  const deleteOrder = async (productid) => {
+    const q = query(
+      collection(db, `tableorders_${id}`),
+      where("id", "==", productid)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    const deletedProduct = querySnapshot.docs[0]._key.path.segments[6];
+    const docRef = doc(db, `tableorders_${id}`, deletedProduct);
+
+    deleteDoc(docRef).then(() => {
+      getTotal();
+      Notiflix.Notify.success("Termék törölve a rendelésből!");
+    });
   };
 
   return (
@@ -217,7 +241,10 @@ const Placeorder = () => {
                 <tbody>
                   {tableOrders.map((item) => {
                     return (
-                      <tr key={item.createdAt}>
+                      <tr
+                        key={item.createdAt}
+                        onClick={() => deleteOrder(item.id)}
+                      >
                         <td>{item.name}</td>
                         <td>{item.price}</td>
                         <td>{item.amount}</td>
@@ -233,13 +260,13 @@ const Placeorder = () => {
         <div className="placeorder__card placeorder__tablepayment">
           <div className="placeorder__tablepaymentdetails">
             <h2>
-              Összeg: <span>{summ} Ft</span>
+              Összeg: <span>{getTotal()} Ft</span>
             </h2>
             <h2>
               Adó: <span>5%</span>
             </h2>
             <h2>
-              Végösszeg: <span>{summ * 1.05} Ft</span>
+              Végösszeg: <span>{getTotal()} Ft</span>
             </h2>
           </div>
           <div className="placeorder__tablepayment__button">

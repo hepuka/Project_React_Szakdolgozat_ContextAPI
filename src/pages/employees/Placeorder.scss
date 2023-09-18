@@ -195,6 +195,10 @@
 
                 }
 
+                h2 {
+                    font-size: 1.3em;
+                }
+
             }
 
             .placeorder__tableordersdetailstitle {
@@ -212,6 +216,14 @@
 
                     thead {
                         border-bottom: 2px dotted $font-color;
+
+                    }
+
+                    tbody {
+
+                        tr {
+                            cursor: pointer;
+                        }
                     }
 
                     th,
@@ -220,6 +232,7 @@
                         text-align: center;
                         padding: 8px;
                         color: $font-color;
+                        font-size: 1.3em;
 
                     }
 
