@@ -14,10 +14,11 @@ const Tables = () => {
   const [tablenumber, setTableNumber] = useState(0);
   const [tableStatus, setTableStatus] = useState("Szabad");
 
-  const handleClick = async (id) => {
+  const handleClick = (id) => {
     if (modalInput === userPin) {
       navigate(`/placeorder/${id}`);
       setModalIsOpen(false);
+      setTableStatus("Foglalt");
     }
   };
 
